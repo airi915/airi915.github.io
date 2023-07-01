@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 300px;
+            background-color: #eef7ff;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .input {
+            justify-content: center;
+            align-items: center;
+            width: 50%;
+        }
+
+        .input input {
+            width: 100%;
+        }
+
+        .guress_range {
+            display: block;
+        }
+
+        .button {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+
+        }
+
+        .button button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="input">
+            <input type="text" id="input" placeholder="請輸入數字">
+        </div>
+
+        <div class="guess_range">
+            <span id="guess_range">數字</span>
+        </div>
+
+        <div class="button">
+            <div id="button1"><button>1</button></div>
+            <div id="button2"><button>2</button></div>
+            <div id="button3"><button>3</button></div>
+            <div id="button4"><button>4</button></div>
+            <div id="button5"><button>5</button></div>
+            <div id="button6"><button>6</button></div>
+            <div id="button7"><button>7</button></div>
+            <div id="button8"><button>8</button></div>
+            <div id="button9"><button>9</button></div>
+            <div id="buttonClear"><button>✘</button></div>
+            <div id="button0"><button>0</button></div>
+            <div id="buttonCheck"><button>✔</button></div>
+        </div>
+
+    </div>
+
+    <script>
+        let min = 1;
+        let max = 100;
+        let randomNumber = Math.floor(Math.random() * 100) + 1;
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+
+            let span = document.getElementById('guess_range');
+            let inputElement = document.getElementById('input');
+
+            span.textContent = `數字範圍：${min} - ${max}`;
+
+            for (let i = 0; i <= 9; i++) {
+                let button = document.getElementById(`button${i}`);
+                button.addEventListener('click', function () {
+                    inputElement.value += i;
+                });
+            }
+
+            let buttonClear = document.getElementById('buttonClear');
+            buttonClear.addEventListener('click', function () {
+                inputElement.value = '';
+            });
+
+            let buttonCheck = document.getElementById('buttonCheck');
+            buttonCheck.addEventListener('click', function () {
+                let inputValue = Number(inputElement.value);
+
+                if (isNaN(inputValue)) {
+                    alert("請輸入數字 ^_^?");
+                } else if (inputValue <= 0 || inputValue > 100) {
+                    alert("輸入的數字超出範圍了喔 ^_^?");
+                } else {
+                    if (inputValue < randomNumber) {
+                        alert("你猜的數字太小了 ^_^!");
+                        min = inputValue + 1;
+                    } else if (inputValue > randomNumber) {
+                        alert("你猜的數字太大了 ^_^!");
+                        max = inputValue - 1;
+                    } else {
+                        alert("恭喜你，猜對了!");
+                    }
+                    span.textContent = `數字範圍：${min} - ${max}`;
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
