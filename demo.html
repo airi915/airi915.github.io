@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            max-width: 960px;
+            padding-top: 30px;
+            margin: auto;
+            text-align: center;
+        }
+
+        #records {
+            width: 400px;
+            height: 300px;
+            margin: 20px auto;
+            border-radius: 5px;
+            background-color: #fffae6;
+            overflow-y: auto;
+            text-align: left;
+            padding: 20px 20px;
+        }
+
+        .highlight {
+            background-color: yellow;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <span>
+            <h1>1A2B GAME</h1>
+        </span>
+        <div class="btn-groups">
+            <button class="btn" id="gameStartBtn">投幣啟動</button>
+            <button class="btn" id="gameResetBtn" disabled>不玩了</button>
+            <button class="btn" id="answerBtn" disabled>偷看答案</button>
+        </div>
+
+        <div id="records">
+            <div class="tip-display">
+                <p>玩一次10塊，請投幣(・∀・)つ⑩</p>
+            </div>
+        </div>
+
+        <div class="btn-group">
+            <input type="text" id="guessInput">
+            <button class="btn" id="guessNumBtn" disabled>猜d(d＇∀＇)</button>
+        </div>
+    </div>
+
+    <script>
+        let numArr = [];
+let guessArr = [];
+let guessInputNum, A, B;
+
+window.onload = function () {
+
+    const gameStartBtn = document.getElementById('gameStartBtn');
+    const gameResetBtn = document.getElementById('gameResetBtn');
+    const answerBtn = document.getElementById('answerBtn');
+    const guessInput = document.getElementById('guessInput');
+    const records = document.getElementById('records');
+    const guessNumBtn = document.getElementById('guessNumBtn');
+
+    gameStartBtn.addEventListener('click', function () {
+        gameStartBtn.disabled = true;
+        gameResetBtn.disabled = false;
+        answerBtn.disabled = false;
+        guessNumBtn.disabled = false;
+        pageInit();
+    });
+
+    gameResetBtn.addEventListener("click", pageInit)
+
+    guessNumBtn.addEventListener("click", function () {
+        let myCountA = 0;
+        let myCountB = 0;
+
+        // 取得使用者輸入
+        let myInput = guessInput.value;
+
+        // 檢查使用者輸入是否有重複的數字
+        if (hasDuplicateDigits(myInput)) {
+            records.innerHTML += '不要輸入重複的數字(#`Д´)ﾉ<br>';
+            return;  // 如果有重複的數字，結束並不進行猜測
+        }
+
+        //檢查使用者輸入是否為四位數字
+        if (myInput.length !== 4) {
+            records.innerHTML += '要4個數字才可以玩欸?( ¯•ω•¯ )<br>';
+            return;  // 如果不是四位數字，結束並不進行猜測
+        }
+
+        // 進行判斷
+        for (let i = 0; i < myInput.length; i++) {
+            let myChar = myInput[i];
+
+            // 使用者輸入的數字之一 有沒有在答案裡面
+            if (answer.includes(myChar)) {
+                // 如果有，判斷位置有沒有相同
+                if (answer.indexOf(myChar) == myInput.indexOf(myChar)) {
+                    myCountA++;
+                } else {
+                    myCountB++;
+                }
+            }
+        }
+
+        // 把本次猜測的結果加到紀錄中
+        records.innerHTML += `<span class="highlight">${myCountA}A${myCountB}B</span> ${myInput}<br>`;
+
+        // 最後判斷遊戲是否獲勝
+        // myCountA = 4 代表猜對，沒有就繼續遊戲
+        if (myCountA == 4) {
+            // 印出贏得遊戲的提示
+            records.innerHTML += `You win! The answer is ${answer}.<br>`;
+        }
+    });
+
+    answerBtn.addEventListener("click", function () {
+        alert(`答案是 ${answer} ㄛ(●´ω｀●)ゞ`);
+    });
+
+}
+
+let answer;
+function pageInit() {
+    // 遊戲介面初始化
+
+    // 產生4個亂數，再組合成一組string，存放到answer變數中
+    let randomNumbers = [];
+    while (randomNumbers.length < 4) {
+        // 產生 0 到 9 的亂數
+        let randomNumber = Math.floor(Math.random() * 10);
+        // 檢查此數字是否重複
+        if (randomNumbers.indexOf(randomNumber) === -1) {
+            randomNumbers.push(randomNumber);
+        }
+    }
+    answer = randomNumbers.join('');
+};
+
+function hasDuplicateDigits(input) {
+    let charSet = new Set(input);
+    return charSet.size !== input.length;
+}
+    </script>
+</body>
+
+</html>
