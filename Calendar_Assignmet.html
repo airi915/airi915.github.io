@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <title>Calendar</title>
+    <style>
+      .item {
+        border: 1px solid black;
+        margin: 5px;
+        padding: 5px;
+      }
+    </style>
+</head>
+<body>
+
+    <button id="prevMonth">Previous Month</button>
+    <button id="nextMonth">Next Month</button>
+    <div id="calendar"></div>
+  
+    <script>
+      let date = new Date();
+      const calendar = document.getElementById('calendar');
+      const prevMonth = document.getElementById('prevMonth');
+      const nextMonth = document.getElementById('nextMonth');
+  
+      function buildCalendar(date) {
+        calendar.innerHTML = '';
+        let month = date.getMonth();
+        let year = date.getFullYear();
+        let firstDay = (new Date(year, month)).getDay();
+        let totalDays = 32 - new Date(year, month, 32).getDate();
+  
+        for (let i = 1; i <= totalDays; i++) {
+          let div = document.createElement('div');
+          div.classList.add('item');
+          div.textContent = i;
+          div.onclick = () => alert(`You clicked on ${i}`);
+          if (i === 1) {
+            div.style.gridColumnStart = firstDay;
+          }
+          calendar.appendChild(div);
+        }
+      }
+  
+      buildCalendar(date);
+  
+      prevMonth.onclick = () => {
+        date.setMonth(date.getMonth() - 1);
+        buildCalendar(date);
+      }
+  
+      nextMonth.onclick = () => {
+        date.setMonth(date.getMonth() + 1);
+        buildCalendar(date);
+      }
+    </script>
+    
+</body>
+</html>
