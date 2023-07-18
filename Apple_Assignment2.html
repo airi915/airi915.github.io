@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .container {
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+        }
+
+        #productImage {
+            max-width: 100%;
+            /* 圖片最大寬度為容器寬度 */
+            max-height: 500px;
+            /* 圖片最大高度為500像素 */
+        }
+    </style>
+
+</head>
+
+
+
+
+<body>
+    <div class="container">
+        <div id="productBtnGroup">
+            <button id="iphone" type="button" class="product-btn">iPhone</button>
+            <button id="ipad" type="button" class="product-btn">iPad</button>
+            <button id="macbook" type="button" class="product-btn">Macbook</button>
+        </div>
+
+        <div id="product-img" class="product-img">
+            <img id="productImage">
+        </div>
+
+        <div id="color" class="product-color"></div>
+        <div id="type" class="product-type"></div>
+        <div id="price" class="price"></div>
+    </div>
+
+    <script>
+        let product = {
+            iphone: {
+                detail: {
+                    productName: 'iPhone 11',
+                    imgUrl: './iphone11-family.png'
+                },
+                color: [
+                    { color: '紅色', value: 'red', imageUrl: './iphone-red.png' },
+                    { color: '黃色', value: 'yellow', imageUrl: './iphone-yellow.png' },
+                    { color: '黑色', value: 'black', imageUrl: './iphone-black.png' },
+                ],
+                spec: {
+                    storage: [
+                        { size: '64GB', fit: 24900 },
+                        { size: '128GB', fit: 26900 },
+                        { size: '256GB', fit: 30400 },
+                    ]
+                }
+            },
+            ipad: {
+                detail: {
+                    productName: 'iPad',
+                    imgUrl: './ipad-family.png'
+                },
+                color: [
+                    { color: '太空灰色', value: 'grey', imageUrl: './ipad-grey.png' },
+                    { color: '銀色', value: 'silver', imageUrl: './ipad-silver.png' },
+                    { color: '金色', value: 'gold', imageUrl: './ipad-gold.png' },
+                ],
+                spec: {
+                    storage: [
+                        { size: '32GB', fit: 10900 },
+                        { size: '128GB', fit: 13900 },
+                    ]
+                }
+            },
+            macbook: {
+                detail: {
+                    productName: 'MacPro 13',
+                    imgUrl: './macbookpro.png'
+                },
+                color: [
+                    { color: '太空灰色', value: 'grey', imageUrl: './macbook-grey.png' },
+                    { color: '銀色', value: 'silver', imageUrl: './macbook-silver.png' },
+                ],
+                spec: {
+                    storage: [
+                        { size: '256GB', fit: 51300 },
+                        { size: '512GB', fit: 57300 },
+                        { size: '1TB', fit: 63300 },
+                        { size: '2TB', fit: 75300 },
+                    ]
+                }
+            }
+        };
+
+        // 把按鈕的事件抽出成一個 function，並接收 productKey
+        function productButtonHandler(productKey) {
+            // 清除先前顏色、規格、價格等等資訊
+            document.getElementById('color').innerHTML = '';
+            document.getElementById('type').innerHTML = '';
+            document.getElementById('price').innerHTML = '';
+
+            // 更新產品圖片
+            document.getElementById('productImage').src = product[productKey].detail.imgUrl;
+
+            // 更新顏色選項
+            product[productKey].color.forEach(colorOption => {
+                let colorButton = document.createElement('button');
+                colorButton.textContent = colorOption.color;
+                colorButton.onclick = () => {
+                    document.getElementById('productImage').src = colorOption.imageUrl;
+                };
+                document.getElementById('color').appendChild(colorButton);
+            });
+
+            // 更新規格選項
+            product[productKey].spec.storage.forEach(storageOption => {
+                let storageButton = document.createElement('button');
+                storageButton.textContent = storageOption.size;
+                storageButton.onclick = () => {
+                    document.getElementById('price').textContent = `${storageOption.fit} 元`;
+                };
+                document.getElementById('type').appendChild(storageButton);
+            });
+        }
+
+        // 設定按鈕的事件
+        document.getElementById('iphone').onclick = () => productButtonHandler('iphone');
+        document.getElementById('ipad').onclick = () => productButtonHandler('ipad');
+        document.getElementById('macbook').onclick = () => productButtonHandler('macbook');
+    </script>
