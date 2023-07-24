@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/c033302ad6.js" crossorigin="anonymous"></script>
+
+
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=Caprasimo&family=DM+Serif+Display:ital@0;1&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=Caprasimo&family=DM+Serif+Display:ital@0;1&family=Kiwi+Maru:wght@300&display=swap');
+
+        body {
+            background: radial-gradient(rgb(255, 203, 203), rgb(255, 253, 209));
+        }
+
+
+        .container {
+            width: 550px;
+            height: 550px;
+            margin: auto;
+            margin-top: 5%;
+            align-items: center;
+            box-sizing: border-box;
+            border: none;
+            background: rgb(255, 252, 252, 0.3);
+        }
+
+        h2 {
+            margin: auto;
+            padding: 20px;
+            text-align: center;
+            font-size: 40px;
+            font-family: 'Baskervville', serif;
+        }
+
+        p {
+            margin: -15px auto 15px auto;
+            padding: 5px 20px;
+            text-align: center;
+            color: grey;
+            font-family: 'Kiwi Maru', serif;
+        }
+
+        .form-control,
+        .form-control:focus {
+            border: none;
+            border-bottom: 2px solid rgb(201, 197, 197);
+            box-shadow: none;
+            outline: none;
+            background: rgb(255, 252, 252, 0.3);
+
+        }
+
+        #button-addon2 {
+            border: none;
+            background: #FFFCEC;
+            border-radius: 50%;
+            color: black;
+            margin: 0 10px;
+        }
+
+        #button-addon2:hover {
+            color: #BEBEBE;
+        }
+
+        .list-group {
+            max-height: 360px;
+            overflow-y: auto;
+            padding: 0;
+        }
+
+        .list-group-item input {
+            height: 25px;
+            border: none;
+            box-shadow: none;
+            outline: none;
+            background-color: #FFF6E7;
+        }
+
+        .list-group-item:first-child {
+            border-top-left-radius: 50px;
+            border-top-right-radius: 50px;
+        }
+
+        .list-group-item:last-child {
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+        }
+
+        .list-group-item input[type="checkbox"] {
+            appearance: none;
+            background-color: #f2f2f2;
+            border: 2px solid #f2f2f2;
+            border-radius: 50%;
+            display: inline-block;
+            position: relative;
+            height: 20px;
+            width: 20px;
+        }
+
+        .list-group-item input[type="checkbox"]:checked:before {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 2px;
+            width: 6px;
+            height: 12px;
+            border: solid #db8484;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        .list-group-item {
+            margin: 10px auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+            background-color: #FFF6E7;
+            height: 30px;
+            width: 80%;
+            border-radius: 50px;
+            box-sizing: border-box;
+            align-items: center;
+        }
+
+        .edit-button,
+        .save-button,
+        .delete-button {
+            display: inline-block;
+            align-items: center;
+            justify-content: center;
+            margin: 5px;
+            padding: 0 5px;
+            background: #FFF6E7;
+            color: black;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>My Daily To-Do ✈</h2>
+        <p>Fake it 'till you make it (ง๑ •̀_•́)ง</p>
+        <div class="input-area">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="오늘 뭐 할까용?" aria-label="Recipient's username"
+                    aria-describedby="button-addon2">
+                <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i
+                        class="fa-solid fa-plus"></i></button>
+            </div>
+            <ul class="list-group">
+            </ul>
+        </div>
+    </div>
+
+
+
+
+    <script>
+
+
+        //新增功能
+        //1. 輸入待辦事項
+        var input = document.querySelector('.form-control'); //獲取使用者輸入
+        var buttonElement = document.querySelector('#button-addon2');
+        var listTo = document.querySelector('.list-group');  //找到待辦事項清單的元素
+
+        var todos = []; //用來儲存待辦事項的陣列, LocalStorage用
+        var oldValue; //保存編輯前的值, LocalStorage用
+
+        //每點擊一次新增按鈕, 都會包含一個新的待辦事項, 一個編輯和一個保存按鈕
+        buttonElement.addEventListener('click', function () {
+            var inputValue = input.value;
+            //console.log(input.value);
+
+            //儲存待辦事項到陣列
+            todos.push(inputValue);
+            //儲存待辦事項陣列到localStorage
+            localStorage.setItem('todos', JSON.stringify(todos));
+
+            //新增checkbox
+            var checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+
+            //按下新增按鈕, 加入待辦事項至待辦清單, 並新增編輯按紐
+            var addList = document.createElement('li');
+            addList.classList.add('list-group-item'); // 新增 Bootstrap 的 list-group-item 類
+            addList.appendChild(checkbox); //將checkbox新增到li中
+
+            var todoInput = document.createElement('input');//待辦事項欄位
+            todoInput.type = 'text';
+            todoInput.value = inputValue;
+            todoInput.readOnly = true; //不可編輯
+
+
+            //創建一個 div 來存放按鈕
+            var buttonContainer = document.createElement('div');
+            buttonContainer.classList.add('button-container');
+
+            var editButton = document.createElement('button'); //編輯按鈕
+            editButton.innerHTML = '<i class="fas fa-solid fa-pen-to-square"></i>'; //使用FontAwesome
+            editButton.classList.add('btn', 'btn-secondary', 'btn-sm', 'edit-button'); //Bootstrap+CSS
+
+            var saveButton = document.createElement('button'); //保存按鈕
+            saveButton.innerHTML = `<i class="fa-solid fa-floppy-disk"></i>`;
+            saveButton.style.display = 'none'; //預設隱藏保存按鈕
+            saveButton.classList.add('btn', 'btn-success', 'btn-sm', 'save-button'); //Bootstrap+CSS
+
+            //在buttonContainer中添加按鈕
+            buttonContainer.appendChild(editButton);
+            buttonContainer.appendChild(saveButton);
+
+            addList.appendChild(todoInput);
+            addList.appendChild(buttonContainer); //將按鈕加入到待辦事項中
+
+            listTo.appendChild(addList);
+            input.value = "";
+            //編輯功能1
+            //1. 按下編輯後按鈕消失，出現"保存"
+
+            //CSS用
+            editButton.addEventListener('click', function () {
+                oldValue = todoInput.value;
+
+                this.style.display = 'none';
+                saveButton.style.display = 'inline-block';
+                todoInput.readOnly = false;
+            });
+
+            saveButton.addEventListener('click', function () {
+                //記錄待辦事項被編輯後的狀態
+                var newValue = todoInput.value;
+
+                // 找到當前待辦事項在陣列中的位置並更新
+                var index = todos.indexOf(oldValue);
+                if (index > -1) {
+                    todos[index] = newValue;
+                }
+
+                // 儲存待辦事項陣列到localStorage, 並轉成字串
+                localStorage.setItem('todos', JSON.stringify(todos));
+
+                this.style.display = 'none';  //保存按鈕
+                editButton.style.display = 'inline-block';
+                todoInput.readOnly = true;
+            })
+
+            checkbox.addEventListener('change', function () {
+                todoInput.style.textDecoration = this.checked ? 'line-through' : 'none';
+                // 更新 localStorage 中的待辦事項
+                var index = todos.indexOf(oldValue);
+                if (index > -1) {
+                    todos[index] = { text: newValue, completed: this.checked };
+                    localStorage.setItem('todos', JSON.stringify(todos));
+                }
+            });
+
+            var deleteButton = document.createElement('button');
+            deleteButton.innerHTML = `<i class="fa-solid fa-trash-can"></i>`;
+            deleteButton.classList.add('btn', 'btn-danger', 'btn-sm', 'delete-button'); //Bootstrap+CSS
+
+            buttonContainer.appendChild(deleteButton); //將刪除按鈕也加入到buttonContainer中
+
+            deleteButton.addEventListener('click', function () {
+                // 從待辦事項列表中移除這個待辦事項
+                listTo.removeChild(addList);
+
+                // 從 localStorage 中移除這個待辦事項
+                var index = todos.indexOf(oldValue);
+                if (index > -1) {
+                    todos.splice(index, 1);
+                    localStorage.setItem('todos', JSON.stringify(todos));
+                }
+            });
+        });
+
+    </script>
+</body>
+
+</html>
