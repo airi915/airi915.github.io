@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -56,32 +58,62 @@
       list-style-type: none;
       padding: 20px;
     }
-
-    .btn-block.line-login {
+    
+    /* .btn-block.line-login {
       display: flex;
       align-items: center;
-      justify-content: flex-start; /* icon推到最左側 */
-      width: 100%; /* 確保佔用所有可用空間 */
-    }
-    .btn-block.line-login img {
+      justify-content: flex-start;
+      width: 100%;
+      background-color: #00c300;
+      color: #fff;
+    } */
+    /* .btn-block.line-login img {
       width: 7%;
       height: auto;
-    }
+    } */
 
-    .line-login-container {
+    /* .line-login-container {
       width: 100%;
       margin: auto;
       display: flex;
       justify-content: center;
+      justify-content: flex-start;
       background-color: #00c300;
       border-radius: 5px;
-    }
+    } */
 
-    .line-login-container .login-btn {
+    /* .line-login-container .login-btn {
       padding: 5px;
       margin: auto;
       justify-content: center;
       text-align: center;
+    }  */
+
+    .btn-line-login{
+      display: flex;
+      justify-content: center;
+      justify-content: flex-start;
+      align-items: center;
+      background-color: #00c300;
+    }
+
+    .btn-line-login:hover{
+      opacity: 0.8;
+    }
+
+    .btn-line-login img{
+      width: 40px;
+      height: 40px;
+    }
+
+    .btn-line-login span{      
+      color: #fff;
+      line-height: 1.43;
+      font-weight: 600;
+      font-size: 14px;
+      width: 100%;
+      text-align: center;
+      margin-left: -40px;
     }
 
     .forgot-link-container{
@@ -119,16 +151,16 @@
                 </ul>
               </div>
               <div class="form-container">
-                <div class="line-login-container">
-                  <div class="btn-block line-login">
+                <!-- <div class="line-login-container"> -->
+                  <!-- <div class="btn-block line-login"> -->
                     <a class="btn-line-login" href="">
                       <img
                       src="https://static.shoplineapp.com/web/assets/misc/line_login.png"
                     />
-                    <span class="login-btn">使用LINE登入</span>
+                    <span>使用LINE登入</span>
                     </a>                   
-                  </div>
-                </div>
+                  <!-- </div> -->
+                <!-- </div> -->
                 <hr />
                 <div class="tabset-title"><p>請輸入您的登入資訊</p></div>
                 <form>
