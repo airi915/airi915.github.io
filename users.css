@@ -1,0 +1,103 @@
+.container {
+    max-width: 100%;
+    margin: auto;
+    justify-content: center;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: auto;
+    justify-content: center;
+}
+
+.left-col.col-12.col-md-6.col-lg-6{
+    margin-right: auto;
+}
+
+.col {
+    flex: 1;  /* 使每個col等寬 */
+    box-sizing: border-box;
+    padding: 0 10px;  /* 一些padding以便元素之間有些空間 */
+}
+
+.col-12 {
+    box-sizing: border-box;
+    padding: 10px;  /* Adding padding for spacing */
+}
+
+.col-6 {
+    width: calc(50% - 20px); /* Subtracting double the padding to ensure the width is maintained */
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.membership-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* 使用 Flexbox 進行佈局的部分 */
+.name-group,
+.email-group,
+.phone-group,
+.password-group,
+.gender-group,
+.birthdate-group {
+    display: flex;
+    align-items: center;  /* 垂直居中 */
+    justify-content: space-between; /* 在主軸的兩端對齊 */
+}
+
+
+/* 給予 label 固定的寬度 */
+.name-group label,
+.email-group label,
+.phone-group label,
+.password-group label,
+.gender-group .label-col,
+.birthdate-group .label-col {
+    width: 20%; /* 調整這個數值使其適應您的設計 */
+    margin-right: 0; /* 移除原先的右邊距 */
+}
+
+
+/* 讓內容佔據剩餘的空間 */
+.name-group input,
+.email-group input,
+.phone-group input,
+.password-group a,
+.gender-group .content-col,
+.birthdate-group .content-col,
+.gender-group select {
+    flex: 1;
+    margin-left: 2%; /* 給予一點的左邊距使其不要太緊貼 label */
+}   
+
+.password-group{
+    margin: 5% 0;
+}
+
+label[data-label-type="subscription"] {
+    margin-right: 10%;
+}
+
+.email-messenger,
+.sms-messenger {
+    display: inline-block;
+}
+
+.box-info.edit-group.subscription{
+    margin: 5% 0;
+}
+
+
+
+
+
+
+
+
