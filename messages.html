@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/c033302ad6.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="messages.css" />
+    <style>
+        .container{
+    width: 100%;
+}
+.row{
+    margin: auto;
+    justify-content: center;
+}
+.message-container.col-12{
+    width: 50%;
+}
+
+.message-area.mx-auto{
+    background-color: #dcdcdc;
+}
+
+li:first-child {
+    justify-content: flex-end;
+}
+li:nth-child(2) {
+    justify-content: flex-start;
+}
+
+.user-image {
+    margin-left: 1rem;
+}
+
+.logo-image {
+    margin-right: 1rem;
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <!-- Nav -->
+            <div class="MemberCenter-logout">
+                <a href="">登出</a>
+            </div>
+            <div class="nav-bar">
+                <nav class="nav nav-pills nav-fill">
+                    <a class="nav-link" href="#">個人資訊</a>
+                    <a class="nav-link" href="#">商店購物金</a>
+                    <a class="nav-link" href="#">優惠券</a>
+                    <a class="nav-link active" aria-current="page" href="#">訊息</a>
+                    <a class="nav-link" href="#">訂單</a>
+                    <a class="nav-link" href="#">追蹤清單</a>
+                </nav>
+            </div>
+            <div class="message-container col-12 d-grid gap-3 mx-auto">
+                <div class="message-title mx-auto">
+                    <h2 class="text-primary-color">vacances</h2>
+                </div>
+                <div class="message-list ">
+                    <ul>
+
+                        <li class="d-flex">
+                            <div class="message-area mx-auto">
+                                您好，有訂單訊息想詢問
+                                <p><time>2022-08-12 12:20:25</time></p>
+                            </div>
+                            <img class="user-image ml-3"
+                                src="https://s3-ap-southeast-1.amazonaws.com/static.shoplineapp.com/web/v1/img/placeholder-user-default.png"
+                                style="width:50px;height:50px">
+                        </li>
+
+                        <li class="d-flex ">
+                            <img class="logo-image mr-3"
+                                src="https://img.shoplineapp.com/media/image_clips/646de1c71cb6080011084547/original.png?1684922823"
+                                style="width:50px;height:50px">
+                            <div class="message-area mx-auto">
+                                您好，請問有什麼可以協助您的呢?
+                                <p><time>2022-08-12 13:00:25</time></p>
+                            </div>
+                        </li>
+
+
+                    </ul>
+
+                </div>
+                <div class="message-textarea">
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="輸入訊息" id="floatingTextarea2"
+                            style="height: 100px"></textarea>
+                        <label for="floatingTextarea2">輸入訊息</label>
+                    </div>
+                </div>
+                <div class="message-button-group ">
+                    <button type="button" class="btn btn-dark"><i class="fa fa-plus-circle"></i>加入圖片</button>
+                    <button type="button" class="btn btn-dark">傳送</button>
+                </div>
+
+            </div>
+        </div>
+        <!-- Closing the row -->
+    </div>
+    <!-- Closing the container -->
+</body>
+
+</html>
