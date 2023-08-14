@@ -11,71 +11,574 @@
     <!--<link rel="stylesheet" href="goods.css" />-->
     <style>
         .container {
-    max-width: 95%;
-    max-height: 100%;   
-}
-.card-group{
-    max-width: 100%;
-    max-height: 80%;
-}
+            max-width: 95%;
+            max-height: 100%;
+        }
+
+        .card-group {
+            max-width: 100%;
+            max-height: 80%;
+        }
+
+        .card-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: filter 0.3s ease;
+        }
+
+        .container a {
+            text-decoration: none;
+        }
+
+        .col-3 .list-group-item {
+            border: none !important;
+        }
+
+        .col-3 ul li a {
+            color: #999;
+        }
+
+        .no-shrink {
+            flex-shrink: 0;
+        }
+
+        .card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover .card-image {
+            filter: brightness(0.5);
+        }
+
+        .card:hover .btn-position {
+            bottom: 25%;
+        }
+
+        .btn-position {
+            position: absolute;
+            bottom: -100%;
+            left: 50%;
+            transform: translateX(-50%);
+            cursor: pointer;
+            transition: background-color 1s ease, color 1s ease;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+
+        .btn-position:hover {
+            background-color: #bd866f;
+            color: #fff;
+        }
+
+        .offcanvas {
+            width: 80% !important;
+        }
 
 
-.card-image-container {
-    width: 100%;
-    height: 500px;
-    background-size: cover; 
-    background-position: center; 
-    background-repeat: no-repeat; 
-}
+        body.offcanvas-open {
+            filter: blur(5px);
+        }
 
-.container a {
-    text-decoration: none;
-}
+        .offcanvas a {
+            text-decoration: none;
+            color: #999;
+        }
 
-.col-3 .list-group-item {
-    border: none !important;
-}
+        .offcanvas .list-group-item {
+            border: none !important;
+        }
 
-.col-3 ul li a {
-    color: #999;
-}
-.no-shrink {
-    flex-shrink: 0;
-}
-.card {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s ease;
-}
-
-.card:hover .card-image-container {
-    filter: brightness(0.5);
-}
-
-.card:hover .btn-position {
-    bottom: 25%;
-}
-
-.btn-position {
-    position: absolute;
-    bottom: -100%;
-    left: 50%;
-    transform: translateX(-50%);
-    cursor: pointer;
-}
-
-
+        @media only screen and (max-width: 767px) {
+            .col-sm-6 {
+                flex: 0 0 50%;
+                max-width: 50%;
+            }
+        }
     </style>
 
 </head>
 
 <body>
+    <!-- 漢堡選單 -->
+    <nav class="navbar navbar-expand-md navbar-light">
+        <div class="container-fluid justify-content-end">
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu"
+                aria-controls="offcanvasMenu" aria-expanded="false">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+        </div>
+    </nav>
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasMenuLabel">商品分類</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="list-group list-group-flush ">
+                <li class="list-group-item"><a href="#" class="list-item d-block">全站商品</a></li>
+                <li class="list-group-item"><a href="#" class="list-item d-block">最新商品</a></li>
+                <li class="list-group-item"><a href="#" class="list-item d-block">人氣熱銷</a></li>
+                <li class="list-group-item"><a href="#" class="list-item d-block">🔥抗敏純鋼【現折200】</a></li>
+                <li class="list-group-item">
+                    <a class="list-item d-block d-flex justify-content-between" data-bs-toggle="collapse"
+                        href="#category1" aria-expanded="false">
+                        迪士尼100周年系列
+                        <i class="bi bi-chevron-down"></i>
+                    </a>
+                    <a href="#" class="d-block text-decoration-none">
+                        <div class="collapse" id="category1">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><a href="#" class="list-item">【迪士尼100週年】祈願純銀手鍊</a>
+                                </li>
+                                <li class="list-group-item"><a href="#" class="list-item">【迪士尼100週年】純銀養耳棒</a>
+                                </li>
+                                <li class="list-group-item"><a href="#" class="list-item">【迪士尼100週年】V
+                                        Class®微奢輕珠寶</a></li>
+                                <li class="list-group-item"><a href="#" class="list-item">【迪士尼100週年】限量周邊商品</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a class="list-item d-block d-flex justify-content-between" data-bs-toggle="collapse"
+                        href="#category2" aria-expanded="false">
+                        🏮祈願純銀手鍊戴上好運
+                        <i class="bi bi-chevron-down"></i>
+                    </a>
+                    <a href="#" class="d-block text-decoration-none">
+                        <div class="collapse" id="category2">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><a href="#" class="list-item">祈願聯名手鍊</a></li>
+                                <li class="list-group-item"><a href="#" class="list-item">祈願單鑽手鍊</a></li>
+                                <li class="list-group-item"><a href="#" class="list-item">【迪士尼100週年】V
+                                        Class®微奢輕珠寶</a></li>
+                                <li class="list-group-item"><a href="#" class="list-item">祈願雙色手鍊</a></li>
+                            </ul>
+                        </div>
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a class="list-item d-block d-flex justify-content-between" data-bs-toggle="collapse"
+                        href="#category3" aria-expanded="false">
+                        V Class®微奢輕珠寶系列
+                        <i class="bi bi-chevron-down"></i>
+                    </a>
+                    <a href="#" class="d-block text-decoration-none">
+                        <div class="collapse" id="category3">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><a href="#" class="list-item">純銀耳環</a></li>
+                                <li class="list-group-item"><a href="#" class="list-item">純銀手鍊</a></li>
+                                <li class="list-group-item"><a href="#" class="list-item">純銀項鍊</a></li>
+                                <li class="list-group-item"><a href="#" class="list-item">純銀戒指</a></li>
+                            </ul>
+                        </div>
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a class="list-item d-block d-flex justify-content-between" data-bs-toggle="collapse"
+                        href="#category4" aria-expanded="false">
+                        925純銀
+                        <i class="bi bi-chevron-down"></i>
+                    </a>
+                    <a href="#" class="d-block text-decoration-none">
+                        <div class="collapse" id="category4">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><a href="#" class="list-item">純銀養耳棒</a></li>
+                                <li class="list-group-item"><a href="#" class="list-item">純銀耳環</a></li>
+                                <li class="list-group-item"><a href="#" class="list-item">純銀耳夾</a></li>
+                                <li class="list-group-item"><a href="#" class="list-item">純銀項鍊</a></li>
+                                <li class="list-group-item">純銀手鍊</li>
+                                <li class="list-group-item"><a href="#" class="list-item">純銀戒指</a></li>
+                            </ul>
+                        </div>
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a class="list-item d-block d-flex justify-content-between" data-bs-toggle="collapse"
+                        href="#category5" aria-expanded="false">
+                        鋼飾系列
+                        <i class="bi bi-chevron-down"></i>
+                    </a>
+                    <a href="#" class="d-block text-decoration-none">
+                        <div class="collapse" id="category5">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><a href="#" class="list-item">醫療鋼耳環</a></li>
+                                <li class="list-group-item"><a href="#" class="list-item">純鋼耳環</a></li>
+                                <li class="list-group-item"><a href="#" class="list-item">鋼飾項鍊</a></li>
+                                <li class="list-group-item"><a href="#" class="list-item">鋼飾手鍊</a></li>
+                                <li class="list-group-item"><a href="#" class="list-item">鋼飾戒指</a></li>
+                            </ul>
+                        </div>
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a class="list-item d-block d-flex justify-content-between" data-bs-toggle="collapse"
+                        href="#category6" aria-expanded="false">
+                        珍珠系列
+                        <i class="bi bi-chevron-down"></i>
+                    </a>
+                    <a href="#" class="d-block text-decoration-none">
+                        <div class="collapse" id="category6">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><a href="#" class="list-item">珍珠耳環</a></li>
+                                <li class="list-group-item"><a href="#" class="list-item">珍珠項鍊、手鍊</a></li>
+                            </ul>
+                        </div>
+                    </a>
+                </li>
+                <li class="list-group-item"><a href="#" class="list-item d-block">訂製姓名系列</a></li>
+                <li class="list-group-item">
+                    <a class="list-item d-block d-flex justify-content-between" data-bs-toggle="collapse"
+                        href="#category7" aria-expanded="false">
+                        耳環
+                        <i class="bi bi-chevron-down"></i>
+                    </a>
+                    <a href="#" class="d-block text-decoration-none">
+                        <div class="collapse" id="category7">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><a href="#" class="list-item">養耳棒</a></li>
+                                <li class="list-group-item"><a href="#" class="list-item">純銀耳環</a></li>
+                                <li class="list-group-item"><a href="#" class="list-item">純鋼耳環</a></li>
+                                <li class="list-group-item"><a href="#" class="list-item">風格耳環</a></li>
+                                <li class="list-group-item"><a href="#" class="list-item">圈圈耳環</a></li>
+                                <li class="list-group-item"><a href="#" class="list-item">轉珠耳環</a></li>
+                            </ul>
+                        </div>
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a class="list-item d-block d-flex justify-content-between" data-bs-toggle="collapse"
+                        href="#category8" aria-expanded="false">
+                        耳夾專門所
+                        <i class="bi bi-chevron-down"></i>
+                    </a>
+                    <a href="#" class="d-block text-decoration-none">
+                        <div class="collapse" id="category8">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><a href="#" class="list-item">純銀耳夾</a></li>
+                                <li class="list-group-item"><a href="#" class="list-item">夾式耳環</a></li>
+                                <li class="list-group-item"><a href="#" class="list-item">耳骨夾</a></li>
+                            </ul>
+                        </div>
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a class="list-item d-block d-flex justify-content-between" data-bs-toggle="collapse"
+                        href="#category9" aria-expanded="false">
+                        項鍊
+                        <i class="bi bi-chevron-down"></i>
+                    </a>
+                    <a href="#" class="d-block text-decoration-none">
+                        <div class="collapse" id="category9">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><a href="#" class="list-item">純銀項鍊</a></li>
+                                <li class="list-group-item"><a href="#" class="list-item">純鋼項鍊</a></li>
+                                <li class="list-group-item"><a href="#" class="list-item">風格項鍊</a></li>
+                                <li class="list-group-item"><a href="#" class="list-item">鎖骨鍊</a></li>
+                                <li class="list-group-item"><a href="#" class="list-item">男生項鍊</a></li>
+                            </ul>
+                        </div>
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a class="list-item d-block d-flex justify-content-between" data-bs-toggle="collapse"
+                        href="#category10" aria-expanded="false">
+                        手鍊
+                        <i class="bi bi-chevron-down"></i>
+                    </a>
+                    <a href="#" class="d-block text-decoration-none">
+                        <div class="collapse" id="category10">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><a href="#" class="list-item">純銀手鍊</a></li>
+                                <li class="list-group-item"><a href="#" class="list-item">純鋼手鍊</a></li>
+                                <li class="list-group-item"><a href="#" class="list-item">風格手鍊</a></li>
+                            </ul>
+                        </div>
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a class="list-item d-block d-flex justify-content-between" data-bs-toggle="collapse"
+                        href="#category11" aria-expanded="false">
+                        戒指
+                        <i class="bi bi-chevron-down"></i>
+                    </a>
+                    <a href="#" class="d-block text-decoration-none">
+                        <div class="collapse" id="category11">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><a href="#" class="list-item">純銀戒指</a></li>
+                                <li class="list-group-item"><a href="#" class="list-item">純鋼戒指</a></li>
+                                <li class="list-group-item"><a href="#" class="list-item">風格戒指</a></li>
+                                <li class="list-group-item"><a href="#" class="list-item">可調式戒指</a></li>
+                            </ul>
+                        </div>
+                    </a>
+                </li>
+                <li class="list-group-item"><a href="#" class="list-item d-block">夏日髮飾</a></li>
+                <li class="list-group-item">
+                    <a class="list-item d-block d-flex justify-content-between" data-bs-toggle="collapse"
+                        href="#category12" aria-expanded="false">
+                        香氛系列
+                        <i class="bi bi-chevron-down"></i>
+                    </a>
+                    <a href="#" class="d-block text-decoration-none">
+                        <div class="collapse" id="category12">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><a href="#" class="list-item">純銀保養</a></li>
+                                <li class="list-group-item"><a href="#" class="list-item">香氛系列</a></li>
+                                <li class="list-group-item"><a href="#" class="list-item">禮盒、飾品盒</a></li>
+                                <li class="list-group-item"><a href="#" class="list-item">莫代爾棉襪系列</a></li>
+                            </ul>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="modal fade d-md-none" id="sideMenu" tabindex="-1" aria-labelledby="sideMenuLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="list-group list-group-flush ">
+                        <li class="list-group-item"><a href="#" class="list-item d-block">全站商品</a></li>
+                        <li class="list-group-item"><a href="#" class="list-item d-block">最新商品</a></li>
+                        <li class="list-group-item"><a href="#" class="list-item d-block">人氣熱銷</a></li>
+                        <li class="list-group-item"><a href="#" class="list-item d-block">🔥抗敏純鋼【現折200】</a></li>
+                        <li class="list-group-item">
+                            <a class="list-item d-block d-flex justify-content-between" data-bs-toggle="collapse"
+                                href="#category1" aria-expanded="false">
+                                迪士尼100周年系列
+                                <i class="bi bi-chevron-down"></i>
+                            </a>
+                            <a href="#" class="d-block text-decoration-none">
+                                <div class="collapse" id="category1">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><a href="#" class="list-item">【迪士尼100週年】祈願純銀手鍊</a>
+                                        </li>
+                                        <li class="list-group-item"><a href="#" class="list-item">【迪士尼100週年】純銀養耳棒</a>
+                                        </li>
+                                        <li class="list-group-item"><a href="#" class="list-item">【迪士尼100週年】V
+                                                Class®微奢輕珠寶</a></li>
+                                        <li class="list-group-item"><a href="#" class="list-item">【迪士尼100週年】限量周邊商品</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a class="list-item d-block d-flex justify-content-between" data-bs-toggle="collapse"
+                                href="#category2" aria-expanded="false">
+                                🏮祈願純銀手鍊戴上好運
+                                <i class="bi bi-chevron-down"></i>
+                            </a>
+                            <a href="#" class="d-block text-decoration-none">
+                                <div class="collapse" id="category2">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><a href="#" class="list-item">祈願聯名手鍊</a></li>
+                                        <li class="list-group-item"><a href="#" class="list-item">祈願單鑽手鍊</a></li>
+                                        <li class="list-group-item"><a href="#" class="list-item">【迪士尼100週年】V
+                                                Class®微奢輕珠寶</a></li>
+                                        <li class="list-group-item"><a href="#" class="list-item">祈願雙色手鍊</a></li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a class="list-item d-block d-flex justify-content-between" data-bs-toggle="collapse"
+                                href="#category3" aria-expanded="false">
+                                V Class®微奢輕珠寶系列
+                                <i class="bi bi-chevron-down"></i>
+                            </a>
+                            <a href="#" class="d-block text-decoration-none">
+                                <div class="collapse" id="category3">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><a href="#" class="list-item">純銀耳環</a></li>
+                                        <li class="list-group-item"><a href="#" class="list-item">純銀手鍊</a></li>
+                                        <li class="list-group-item"><a href="#" class="list-item">純銀項鍊</a></li>
+                                        <li class="list-group-item"><a href="#" class="list-item">純銀戒指</a></li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a class="list-item d-block d-flex justify-content-between" data-bs-toggle="collapse"
+                                href="#category4" aria-expanded="false">
+                                925純銀
+                                <i class="bi bi-chevron-down"></i>
+                            </a>
+                            <a href="#" class="d-block text-decoration-none">
+                                <div class="collapse" id="category4">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><a href="#" class="list-item">純銀養耳棒</a></li>
+                                        <li class="list-group-item"><a href="#" class="list-item">純銀耳環</a></li>
+                                        <li class="list-group-item"><a href="#" class="list-item">純銀耳夾</a></li>
+                                        <li class="list-group-item"><a href="#" class="list-item">純銀項鍊</a></li>
+                                        <li class="list-group-item">純銀手鍊</li>
+                                        <li class="list-group-item"><a href="#" class="list-item">純銀戒指</a></li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a class="list-item d-block d-flex justify-content-between" data-bs-toggle="collapse"
+                                href="#category5" aria-expanded="false">
+                                鋼飾系列
+                                <i class="bi bi-chevron-down"></i>
+                            </a>
+                            <a href="#" class="d-block text-decoration-none">
+                                <div class="collapse" id="category5">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><a href="#" class="list-item">醫療鋼耳環</a></li>
+                                        <li class="list-group-item"><a href="#" class="list-item">純鋼耳環</a></li>
+                                        <li class="list-group-item"><a href="#" class="list-item">鋼飾項鍊</a></li>
+                                        <li class="list-group-item"><a href="#" class="list-item">鋼飾手鍊</a></li>
+                                        <li class="list-group-item"><a href="#" class="list-item">鋼飾戒指</a></li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a class="list-item d-block d-flex justify-content-between" data-bs-toggle="collapse"
+                                href="#category6" aria-expanded="false">
+                                珍珠系列
+                                <i class="bi bi-chevron-down"></i>
+                            </a>
+                            <a href="#" class="d-block text-decoration-none">
+                                <div class="collapse" id="category6">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><a href="#" class="list-item">珍珠耳環</a></li>
+                                        <li class="list-group-item"><a href="#" class="list-item">珍珠項鍊、手鍊</a></li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-group-item"><a href="#" class="list-item d-block">訂製姓名系列</a></li>
+                        <li class="list-group-item">
+                            <a class="list-item d-block d-flex justify-content-between" data-bs-toggle="collapse"
+                                href="#category7" aria-expanded="false">
+                                耳環
+                                <i class="bi bi-chevron-down"></i>
+                            </a>
+                            <a href="#" class="d-block text-decoration-none">
+                                <div class="collapse" id="category7">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><a href="#" class="list-item">養耳棒</a></li>
+                                        <li class="list-group-item"><a href="#" class="list-item">純銀耳環</a></li>
+                                        <li class="list-group-item"><a href="#" class="list-item">純鋼耳環</a></li>
+                                        <li class="list-group-item"><a href="#" class="list-item">風格耳環</a></li>
+                                        <li class="list-group-item"><a href="#" class="list-item">圈圈耳環</a></li>
+                                        <li class="list-group-item"><a href="#" class="list-item">轉珠耳環</a></li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a class="list-item d-block d-flex justify-content-between" data-bs-toggle="collapse"
+                                href="#category8" aria-expanded="false">
+                                耳夾專門所
+                                <i class="bi bi-chevron-down"></i>
+                            </a>
+                            <a href="#" class="d-block text-decoration-none">
+                                <div class="collapse" id="category8">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><a href="#" class="list-item">純銀耳夾</a></li>
+                                        <li class="list-group-item"><a href="#" class="list-item">夾式耳環</a></li>
+                                        <li class="list-group-item"><a href="#" class="list-item">耳骨夾</a></li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a class="list-item d-block d-flex justify-content-between" data-bs-toggle="collapse"
+                                href="#category9" aria-expanded="false">
+                                項鍊
+                                <i class="bi bi-chevron-down"></i>
+                            </a>
+                            <a href="#" class="d-block text-decoration-none">
+                                <div class="collapse" id="category9">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><a href="#" class="list-item">純銀項鍊</a></li>
+                                        <li class="list-group-item"><a href="#" class="list-item">純鋼項鍊</a></li>
+                                        <li class="list-group-item"><a href="#" class="list-item">風格項鍊</a></li>
+                                        <li class="list-group-item"><a href="#" class="list-item">鎖骨鍊</a></li>
+                                        <li class="list-group-item"><a href="#" class="list-item">男生項鍊</a></li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a class="list-item d-block d-flex justify-content-between" data-bs-toggle="collapse"
+                                href="#category10" aria-expanded="false">
+                                手鍊
+                                <i class="bi bi-chevron-down"></i>
+                            </a>
+                            <a href="#" class="d-block text-decoration-none">
+                                <div class="collapse" id="category10">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><a href="#" class="list-item">純銀手鍊</a></li>
+                                        <li class="list-group-item"><a href="#" class="list-item">純鋼手鍊</a></li>
+                                        <li class="list-group-item"><a href="#" class="list-item">風格手鍊</a></li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a class="list-item d-block d-flex justify-content-between" data-bs-toggle="collapse"
+                                href="#category11" aria-expanded="false">
+                                戒指
+                                <i class="bi bi-chevron-down"></i>
+                            </a>
+                            <a href="#" class="d-block text-decoration-none">
+                                <div class="collapse" id="category11">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><a href="#" class="list-item">純銀戒指</a></li>
+                                        <li class="list-group-item"><a href="#" class="list-item">純鋼戒指</a></li>
+                                        <li class="list-group-item"><a href="#" class="list-item">風格戒指</a></li>
+                                        <li class="list-group-item"><a href="#" class="list-item">可調式戒指</a></li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-group-item"><a href="#" class="list-item d-block">夏日髮飾</a></li>
+                        <li class="list-group-item">
+                            <a class="list-item d-block d-flex justify-content-between" data-bs-toggle="collapse"
+                                href="#category12" aria-expanded="false">
+                                香氛系列
+                                <i class="bi bi-chevron-down"></i>
+                            </a>
+                            <a href="#" class="d-block text-decoration-none">
+                                <div class="collapse" id="category12">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><a href="#" class="list-item">純銀保養</a></li>
+                                        <li class="list-group-item"><a href="#" class="list-item">香氛系列</a></li>
+                                        <li class="list-group-item"><a href="#" class="list-item">禮盒、飾品盒</a></li>
+                                        <li class="list-group-item"><a href="#" class="list-item">莫代爾棉襪系列</a></li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <div class="container mt-5">
         <div class="row d-flex flex-wrap">
             <!-- 左側商品分類 -->
-            <div class="col-3 ">
+            <div class="col-3 d-none d-md-block">
                 <ul class="list-group list-group-flush ">
                     <li class="list-group-item"><a href="#" class="list-item d-block">全站商品</a></li>
                     <li class="list-group-item"><a href="#" class="list-item d-block">最新商品</a></li>
@@ -294,14 +797,13 @@
                 </ul>
             </div>
 
-            <div class="col-9 d-flex flex-column justify-content-between">
+            <div class="col-12 col-md-9 d-flex flex-column justify-content-between">
                 <!-- 最新商品標題和排序選項 -->
-                <div class="row mb-3 align-items-center">
-                    <div class="col-6 text-start">
-                        <h3>最新商品</h3>
-                    </div>
-                    <div class="col-6">
-                        <div class="row mb-3 align-items-center">
+                <div class="row mb-3">
+                    <div class="col-12 d-flex justify-content-between align-items-center flex-wrap"
+                        style="margin-bottom: 20px;">
+                        <h3 class="mb-5">最新商品</h3>
+                        <div class="row d-flex align-items-center">
                             <div class="col-6 text-end">
                                 <select class="form-select" aria-label="Sort by">
                                     <option selected>排序方式</option>
@@ -323,198 +825,183 @@
                             </div>
                         </div>
                     </div>
-                    <div class="flex-grow-1"></div>
-                    <div class="row">
-                        <div class="col-4 mb-4 d-flex">
-                            <div class="card flex-fill border-0">
-                                <div class="card-image-container"
-                                    style="background-image: url('https://shoplineimg.com/6399a37d39de6f0030260f40/64c0c80420f26400013da19d/600x.webp?source_format=jpg');">
-                                </div>
-                                <div class="card-body d-flex flex-column justify-content-center">
-                                    <h5 class="card-title text-center fs-6 text-black-50">未來少女聯名｜紫月光．祈願水晶純銀手鍊</h5>
-                                    <p class="card-text text-center fw-bold text-black-50">NT$980</p>
-                                </div>
-                                <div class="d-grid gap-2 col-6 mx-auto ">
-                                    <a href="#"
-                                        class="btn btn-primary btn-position text-decoration-none bg-light text-dark border-0 ">加入購物車</a>
-                                </div>
+                    <div class="col-sm-6 col-md-4 mb-4 d-flex">
+                        <div class="card flex-fill border-0">
+                            <img src="https://shoplineimg.com/6399a37d39de6f0030260f40/64c0c80420f26400013da19d/600x.webp?source_format=jpg"
+                                alt="未來少女聯名｜紫月光．祈願水晶純銀手鍊" class="card-image">
+                            <div class="card-body d-flex flex-column justify-content-center">
+                                <h5 class="card-title text-center fs-6 text-black-50">未來少女聯名｜紫月光．祈願水晶純銀手鍊</h5>
+                                <p class="card-text text-center fw-bold text-black-50">NT$980</p>
+                            </div>
+                            <div class="d-grid gap-2 col-6 mx-auto ">
+                                <a href="#" class="btn btn-primary btn-position text-decoration-none border-0">加入購物車</a>
                             </div>
                         </div>
+                    </div>
 
 
-                        <div class="col-4 mb-4 d-flex">
-                            <div class="card flex-fill border-0">
-                                <div class="card-image-container"
-                                    style="background-image: url('https://shoplineimg.com/6399a37d39de6f0030260f40/64c0c802c4d2680001a9b18e/600x.webp?source_format=jpg');">
-                                </div>
-                                <div class="card-body d-flex flex-column justify-content-center">
-                                    <h5 class="card-title text-center fs-6 text-black-50">未來少女聯名｜日光之橙．祈願水晶純銀手鍊</h5>
-                                    <p class="card-text text-center fw-bold text-black-50">NT$980</p>
-                                </div>
-                                <div class="d-grid gap-2 col-6 mx-auto ">
-                                    <a href="#"
-                                        class="btn btn-primary btn-position text-decoration-none bg-light text-dark border-0 ">加入購物車</a>
-                                </div>
+                    <div class="col-sm-6 col-md-4 mb-4 d-flex">
+                        <div class="card flex-fill border-0">
+                            <img src="https://shoplineimg.com/6399a37d39de6f0030260f40/64c0c802c4d2680001a9b18e/600x.webp?source_format=jpg"
+                                alt="未來少女聯名｜日光之橙．祈願水晶純銀手鍊" class="card-image">
+                            <div class="card-body d-flex flex-column justify-content-center">
+                                <h5 class="card-title text-center fs-6 text-black-50">未來少女聯名｜日光之橙．祈願水晶純銀手鍊</h5>
+                                <p class="card-text text-center fw-bold text-black-50">NT$980</p>
+                            </div>
+                            <div class="d-grid gap-2 col-6 mx-auto ">
+                                <a href="#"
+                                    class="btn btn-primary btn-position text-decoration-none border-0 ">加入購物車</a>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="col-4 mb-4 d-flex">
-                            <div class="card flex-fill border-0">
-                                <div class="card-image-container"
-                                    style="background-image: url('https://shoplineimg.com/6399a37d39de6f0030260f40/64c0c80533759f000158c534/600x.webp?source_format=jpg');">
-                                </div>
-                                <div class="card-body d-flex flex-column justify-content-center">
-                                    <h5 class="card-title text-center fs-6 text-black-50">未來少女聯名｜幻藍小熊．祈願水晶純銀手鍊</h5>
-                                    <p class="card-text text-center fw-bold text-black-50">NT$980</p>
-                                </div>
-                                <div class="d-grid gap-2 col-6 mx-auto ">
-                                    <a href="#"
-                                        class="btn btn-primary btn-position text-decoration-none bg-light text-dark border-0 ">加入購物車</a>
-                                </div>
+                    <div class="col-sm-6 col-md-4 mb-4 d-flex">
+                        <div class="card flex-fill border-0">
+
+                            <img src="https://shoplineimg.com/6399a37d39de6f0030260f40/64c0c80533759f000158c534/600x.webp?source_format=jpg"
+                                alt="未來少女聯名｜幻藍小熊．祈願水晶純銀手鍊" class="card-image">
+                            <div class="card-body d-flex flex-column justify-content-center">
+                                <h5 class="card-title text-center fs-6 text-black-50">未來少女聯名｜幻藍小熊．祈願水晶純銀手鍊</h5>
+                                <p class="card-text text-center fw-bold text-black-50">NT$980</p>
+                            </div>
+                            <div class="d-grid gap-2 col-6 mx-auto ">
+                                <a href="#"
+                                    class="btn btn-primary btn-position text-decoration-none border-0 ">加入購物車</a>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="col-4 mb-4 d-flex">
-                            <div class="card flex-fill border-0">
-                                <div class="card-image-container"
-                                    style="background-image: url('https://shoplineimg.com/6399a37d39de6f0030260f40/64c0c80333759f000158c52f/600x.webp?source_format=jpg');">
-                                </div>
-                                <div class="card-body d-flex flex-column justify-content-center">
-                                    <h5 class="card-title text-center fs-6 text-black-50">未來少女聯名｜薄荷水晶．祈願水晶純銀手鍊</h5>
-                                    <p class="card-text text-center fw-bold text-black-50">NT$980</p>
-                                </div>
-                                <div class="d-grid gap-2 col-6 mx-auto ">
-                                    <a href="#"
-                                        class="btn btn-primary btn-position text-decoration-none bg-light text-dark border-0 ">加入購物車</a>
-                                </div>
+                    <div class="col-sm-6 col-md-4 mb-4 d-flex">
+                        <div class="card flex-fill border-0">
+                            <img src="https://shoplineimg.com/6399a37d39de6f0030260f40/64c0c80333759f000158c52f/600x.webp?source_format=jpg"
+                                alt="未來少女聯名｜薄荷水晶．祈願水晶純銀手鍊" class="card-image">
+                            <div class="card-body d-flex flex-column justify-content-center">
+                                <h5 class="card-title text-center fs-6 text-black-50">未來少女聯名｜薄荷水晶．祈願水晶純銀手鍊</h5>
+                                <p class="card-text text-center fw-bold text-black-50">NT$980</p>
+                            </div>
+                            <div class="d-grid gap-2 col-6 mx-auto ">
+                                <a href="#"
+                                    class="btn btn-primary btn-position text-decoration-none border-0 ">加入購物車</a>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="col-4 mb-4 d-flex">
-                            <div class="card flex-fill border-0">
-                                <div class="card-image-container"
-                                    style="background-image: url('https://shoplineimg.com/6399a37d39de6f0030260f40/64c0c80633759f000158c545/600x.webp?source_format=jpg');">
-                                </div>
-                                <div class="card-body d-flex flex-column justify-content-center">
-                                    <h5 class="card-title text-center fs-6 text-black-50">未來少女聯名｜紫月光．祈願水晶純銀手鍊</h5>
-                                    <p class="card-text text-center fw-bold text-black-50">NT$980</p>
-                                </div>
-                                <div class="d-grid gap-2 col-6 mx-auto ">
-                                    <a href="#"
-                                        class="btn btn-primary btn-position text-decoration-none bg-light text-dark border-0 ">加入購物車</a>
-                                </div>
+                    <div class="col-sm-6 col-md-4 mb-4 d-flex">
+                        <div class="card flex-fill border-0">
+                            <img src="https://shoplineimg.com/6399a37d39de6f0030260f40/64c0c80633759f000158c545/600x.webp?source_format=jpg"
+                                alt="未來少女聯名｜紫月光．祈願水晶純銀手鍊" class="card-image">
+                            <div class="card-body d-flex flex-column justify-content-center">
+                                <h5 class="card-title text-center fs-6 text-black-50">未來少女聯名｜紫月光．祈願水晶純銀手鍊</h5>
+                                <p class="card-text text-center fw-bold text-black-50">NT$980</p>
+                            </div>
+                            <div class="d-grid gap-2 col-6 mx-auto ">
+                                <a href="#"
+                                    class="btn btn-primary btn-position text-decoration-none border-0 ">加入購物車</a>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="col-4 mb-4 d-flex">
-                            <div class="card flex-fill border-0">
-                                <div class="card-image-container"
-                                    style="background-image: url('https://shoplineimg.com/6399a37d39de6f0030260f40/64c0c80733759f000158c554/600x.webp?source_format=jpg');">
-                                </div>
-                                <div class="card-body d-flex flex-column justify-content-center">
-                                    <h5 class="card-title text-center fs-6 text-black-50">未來少女聯名｜幽靈水晶．祈願水晶純銀手鍊</h5>
-                                    <p class="card-text text-center fw-bold text-black-50">NT$980</p>
-                                </div>
-                                <div class="d-grid gap-2 col-6 mx-auto ">
-                                    <a href="#"
-                                        class="btn btn-primary btn-position text-decoration-none bg-light text-dark border-0 ">加入購物車</a>
-                                </div>
+                    <div class="col-sm-6 col-md-4 mb-4 d-flex">
+                        <div class="card flex-fill border-0">
+                            <img src="https://shoplineimg.com/6399a37d39de6f0030260f40/64c0c80733759f000158c554/600x.webp?source_format=jpg"
+                                alt="未來少女聯名｜幽靈水晶．祈願水晶純銀手鍊" class="card-image">
+                            <div class="card-body d-flex flex-column justify-content-center">
+                                <h5 class="card-title text-center fs-6 text-black-50">未來少女聯名｜幽靈水晶．祈願水晶純銀手鍊</h5>
+                                <p class="card-text text-center fw-bold text-black-50">NT$980</p>
+                            </div>
+                            <div class="d-grid gap-2 col-6 mx-auto ">
+                                <a href="#"
+                                    class="btn btn-primary btn-position text-decoration-none border-0 ">加入購物車</a>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="col-4 mb-4 d-flex">
-                            <div class="card flex-fill border-0">
-                                <div class="card-image-container"
-                                    style="background-image: url('https://shoplineimg.com/6399a37d39de6f0030260f40/64c0c80220f26400013da19c/600x.webp?source_format=jpg');">
-                                </div>
-                                <div class="card-body d-flex flex-column justify-content-center">
-                                    <h5 class="card-title text-center fs-6 text-black-50">未來少女聯名｜黑曜精靈．祈願水晶純銀手鍊</h5>
-                                    <p class="card-text text-center fw-bold text-black-50">NT$980</p>
-                                </div>
-                                <div class="d-grid gap-2 col-6 mx-auto ">
-                                    <a href="#"
-                                        class="btn btn-primary btn-position text-decoration-none bg-light text-dark border-0 ">加入購物車</a>
-                                </div>
+                    <div class="col-sm-6 col-md-4 mb-4 d-flex">
+                        <div class="card flex-fill border-0">
+                            <img src="https://shoplineimg.com/6399a37d39de6f0030260f40/64c0c80220f26400013da19c/600x.webp?source_format=jpg"
+                                alt="未來少女聯名｜黑曜精靈．祈願水晶純銀手鍊" class="card-image">
+                            <div class="card-body d-flex flex-column justify-content-center">
+                                <h5 class="card-title text-center fs-6 text-black-50">未來少女聯名｜黑曜精靈．祈願水晶純銀手鍊</h5>
+                                <p class="card-text text-center fw-bold text-black-50">NT$980</p>
+                            </div>
+                            <div class="d-grid gap-2 col-6 mx-auto ">
+                                <a href="#"
+                                    class="btn btn-primary btn-position text-decoration-none border-0 ">加入購物車</a>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="col-4 mb-4 d-flex">
-                            <div class="card flex-fill border-0">
-                                <div class="card-image-container"
-                                    style="background-image: url('https://shoplineimg.com/6399a37d39de6f0030260f40/64c0c802c4d2680001a9b18d/600x.webp?source_format=jpg');">
-                                </div>
-                                <div class="card-body d-flex flex-column justify-content-center">
-                                    <h5 class="card-title text-center fs-6 text-black-50">金屬流線波浪．髮箍</h5>
-                                    <p class="card-text text-center fw-bold text-black-50">NT$480</p>
-                                </div>
-                                <div class="d-grid gap-2 col-6 mx-auto ">
-                                    <a href="#"
-                                        class="btn btn-primary btn-position text-decoration-none bg-light text-dark border-0 ">加入購物車</a>
-                                </div>
+                    <div class="col-sm-6 col-md-4 mb-4 d-flex">
+                        <div class="card flex-fill border-0">
+                            <img src="https://shoplineimg.com/6399a37d39de6f0030260f40/64c0c802c4d2680001a9b18d/600x.webp?source_format=jpg"
+                                alt="金屬流線波浪．髮箍" class="card-image">
+
+                            <div class="card-body d-flex flex-column justify-content-center">
+                                <h5 class="card-title text-center fs-6 text-black-50">金屬流線波浪．髮箍</h5>
+                                <p class="card-text text-center fw-bold text-black-50">NT$480</p>
+                            </div>
+                            <div class="d-grid gap-2 col-6 mx-auto ">
+                                <a href="#" class="btn btn-primary btn-position text-decoration-non border-0 ">加入購物車</a>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="col-4 mb-4 d-flex">
-                            <div class="card flex-fill border-0">
-                                <div class="card-image-container"
-                                    style="background-image: url('https://shoplineimg.com/6399a37d39de6f0030260f40/64c0c806c4d2680001a9b19f/600x.webp?source_format=jpg');">
-                                </div>
-                                <div class="card-body d-flex flex-column justify-content-center">
-                                    <h5 class="card-title text-center fs-6 text-black-50">絲帶蝴蝶結．沙夾</h5>
-                                    <p class="card-text text-center fw-bold text-black-50">NT$680</p>
-                                </div>
-                                <div class="d-grid gap-2 col-6 mx-auto ">
-                                    <a href="#"
-                                        class="btn btn-primary btn-position text-decoration-none bg-light text-dark border-0 ">加入購物車</a>
-                                </div>
+                    <div class="col-sm-6 col-md-4 mb-4 d-flex">
+                        <div class="card flex-fill border-0">
+                            <img src="https://shoplineimg.com/6399a37d39de6f0030260f40/64c0c806c4d2680001a9b19f/600x.webp?source_format=jpg"
+                                alt="絲帶蝴蝶結．沙夾" class="card-image">
+                            <div class="card-body d-flex flex-column justify-content-center">
+                                <h5 class="card-title text-center fs-6 text-black-50">絲帶蝴蝶結．沙夾</h5>
+                                <p class="card-text text-center fw-bold text-black-50">NT$680</p>
+                            </div>
+                            <div class="d-grid gap-2 col-6 mx-auto ">
+                                <a href="#"
+                                    class="btn btn-primary btn-position text-decoration-none border-0 ">加入購物車</a>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="col-4 mb-4 d-flex">
-                            <div class="card flex-fill border-0">
-                                <div class="card-image-container"
-                                    style="background-image: url('https://shoplineimg.com/6399a37d39de6f0030260f40/64c0c806c4d2680001a9b1a0/600x.webp?source_format=jpg');">
-                                </div>
-                                <div class="card-body d-flex flex-column justify-content-center">
-                                    <h5 class="card-title text-center fs-6 text-black-50">氣質典雅珍珠．髮箍</h5>
-                                    <p class="card-text text-center fw-bold text-black-50">NT$580</p>
-                                </div>
-                                <div class="d-grid gap-2 col-6 mx-auto ">
-                                    <a href="#"
-                                        class="btn btn-primary btn-position text-decoration-none bg-light text-dark border-0 ">加入購物車</a>
-                                </div>
+                    <div class="col-sm-6 col-md-4 mb-4 d-flex">
+                        <div class="card flex-fill border-0">
+                            <img src="https://shoplineimg.com/6399a37d39de6f0030260f40/64c0c806c4d2680001a9b1a0/600x.webp?source_format=jpg"
+                                alt="氣質典雅珍珠．髮箍" class="card-image">
+                            <div class="card-body d-flex flex-column justify-content-center">
+                                <h5 class="card-title text-center fs-6 text-black-50">氣質典雅珍珠．髮箍</h5>
+                                <p class="card-text text-center fw-bold text-black-50">NT$580</p>
+                            </div>
+                            <div class="d-grid gap-2 col-6 mx-auto ">
+                                <a href="#"
+                                    class="btn btn-primary btn-position text-decoration-none border-0 ">加入購物車</a>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="col-4 mb-4 d-flex">
-                            <div class="card flex-fill border-0">
-                                <div class="card-image-container"
-                                    style="background-image: url('https://shoplineimg.com/6399a37d39de6f0030260f40/64c0c80233759f000158c52e/600x.webp?source_format=jpg');">
-                                </div>
-                                <div class="card-body d-flex flex-column justify-content-center">
-                                    <h5 class="card-title text-center fs-6 text-black-50"> 鎖鏈滾邊．髮箍</h5>
-                                    <p class="card-text text-center fw-bold text-black-50">NT$580</p>
-                                </div>
-                                <div class="d-grid gap-2 col-6 mx-auto ">
-                                    <a href="#"
-                                        class="btn btn-primary btn-position text-decoration-none bg-light text-dark border-0 ">加入購物車</a>
-                                </div>
+                    <div class="col-sm-6 col-md-4 mb-4d-flex">
+                        <div class="card flex-fill border-0">
+                            <img src="https://shoplineimg.com/6399a37d39de6f0030260f40/64c0c80233759f000158c52e/600x.webp?source_format=jpg"
+                                alt="鎖鏈滾邊．髮箍" class="card-image">
+                            <div class="card-body d-flex flex-column justify-content-center">
+                                <h5 class="card-title text-center fs-6 text-black-50">鎖鏈滾邊．髮箍</h5>
+                                <p class="card-text text-center fw-bold text-black-50">NT$580</p>
+                            </div>
+                            <div class="d-grid gap-2 col-6 mx-auto ">
+                                <a href="#"
+                                    class="btn btn-primary btn-position text-decoration-none border-0 ">加入購物車</a>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="col-4 mb-4 d-flex">
-                            <div class="card flex-fill border-0">
-                                <div class="card-image-container"
-                                    style="background-image: url('https://shoplineimg.com/6399a37d39de6f0030260f40/64c0c80420f26400013da19e/600x.webp?source_format=jpg');">
-                                </div>
-                                <div class="card-body d-flex flex-column justify-content-center">
-                                    <h5 class="card-title text-center fs-6 text-black-50">X 與方形．沙夾</h5>
-                                    <p class="card-text text-center fw-bold text-black-50">NT$580</p>
-                                </div>
-                                <div class="d-grid gap-2 col-6 mx-auto ">
-                                    <a href="#"
-                                        class="btn btn-primary btn-position text-decoration-none bg-light text-dark border-0 ">加入購物車</a>
-                                </div>
+                    <div class="col-sm-6 col-md-4 mb-4 d-flex">
+                        <div class="card flex-fill border-0">
+                            <img src="https://shoplineimg.com/6399a37d39de6f0030260f40/64c0c80420f26400013da19e/600x.webp?source_format=jpg"
+                                alt="X 與方形．沙夾" class="card-image">
+                            <div class="card-body d-flex flex-column justify-content-center">
+                                <h5 class="card-title text-center fs-6 text-black-50">X 與方形．沙夾</h5>
+                                <p class="card-text text-center fw-bold text-black-50">NT$580</p>
+                            </div>
+                            <div class="d-grid gap-2 col-6 mx-auto ">
+                                <a href="#"
+                                    class="btn btn-primary btn-position text-decoration-none border-0 ">加入購物車</a>
                             </div>
                         </div>
                     </div>
@@ -525,6 +1012,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
             crossorigin="anonymous"></script>
+    </div>
 
 </body>
 
@@ -543,6 +1031,7 @@
             icon.classList.add('bi-chevron-down');
         });
     });
+
 
 </script>
 
