@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/c033302ad6.js" crossorigin="anonymous"></script>
+
+
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=Caprasimo&family=DM+Serif+Display:ital@0;1&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=Caprasimo&family=DM+Serif+Display:ital@0;1&family=Kiwi+Maru:wght@300&display=swap');
+
+        body {
+            background: radial-gradient(rgb(255, 203, 203), rgb(255, 253, 209));
+        }
+
+
+        .container {
+            width: 550px;
+            height: 550px;
+            margin: auto;
+            margin-top: 5%;
+            align-items: center;
+            box-sizing: border-box;
+            border: none;
+            background: rgb(255, 252, 252, 0.3);
+        }
+
+        h2 {
+            margin: auto;
+            padding: 20px;
+            text-align: center;
+            font-size: 40px;
+            font-family: 'Baskervville', serif;
+        }
+
+        p {
+            margin: -15px auto 5px auto;
+            padding: 5px 20px;
+            text-align: center;
+            color: grey;
+            font-family: 'Kiwi Maru', serif;
+        }
+
+        .input-group {
+            display: flex;
+            justify-content: center;
+        }
+
+        .input-group>.form-control {
+            flex: none;
+            width: 80%;
+            margin: auto;
+            margin-right: 10px;
+        }
+
+        .form-control,
+        .form-control:focus {
+            border: none;
+            border-bottom: 2px solid rgb(201, 197, 197);
+            box-shadow: none;
+            outline: none;
+            background: rgb(255, 252, 252, 0.3);
+
+        }
+
+        #button-addon2 {
+            border: none;
+            background: #FFFCEC;
+            border-radius: 50%;
+            color: black;
+            margin-left: 5px;
+        }
+
+        #button-addon2:hover {
+            color: #BEBEBE;
+        }
+
+        .list-group {
+            max-height: 360px;
+            overflow-y: auto;
+            padding: 0;
+        }
+
+        .list-group-item input {
+            height: 25px;
+            width: 280px;
+            border: none;
+            box-shadow: none;
+            outline: none;
+            background-color: #FFF6E7;
+        }
+
+        .list-group-item:first-child {
+            border-top-left-radius: 50px;
+            border-top-right-radius: 50px;
+        }
+
+        .list-group-item:last-child {
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+        }
+
+        .list-group-item input[type="checkbox"] {
+            appearance: none;
+            background-color: #FFF6E7;
+            border: 2px solid #ebb9b9;
+            border-radius: 50%;
+            display: inline-block;
+            position: relative;
+            height: 20px;
+            width: 20px;
+        }
+
+        .list-group-item input[type="checkbox"]:checked:before {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 2px;
+            width: 6px;
+            height: 12px;
+            border: solid #db8484;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        .list-group-item {
+            margin: 10px auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+            background-color: #FFF6E7;
+            height: 30px;
+            width: 80%;
+            border-radius: 50px;
+            box-sizing: border-box;
+            align-items: center;
+        }
+
+        .edit-button,
+        .save-button,
+        .delete-button {
+            display: inline-block;
+            align-items: center;
+            justify-content: center;
+            margin: 5px;
+            padding: 0 5px;
+            background: #FFF6E7;
+            color: black;
+            border: none;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+
+        }
+
+        /* 軌道 */
+        ::-webkit-scrollbar-track {
+            background: #FFF6E7;
+        }
+
+        /* 滑塊 */
+        ::-webkit-scrollbar-thumb {
+            background: #edb6b6;
+            border-radius: 50px;
+        }
+
+        /* 滑塊hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e9a7a7;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>My Daily To-Do ✈</h2>
+        <p>Fake it 'till you make it (ง๑ •̀_•́)ง</p>
+        <div class="input-area">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="오늘 뭐 할까용?" aria-label="Recipient's username"
+                    aria-describedby="button-addon2">
+                <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i
+                        class="fa-solid fa-plus"></i></button>
+            </div>
+            <ul class="list-group">
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        //創建一個函數來處理待辦事項的內容創建和事件綁定
+        function createTodoElement(todo) {
+            // 每個待辦事項都需要包含一個checkbox, 一個輸入框和兩個按鈕(編輯&保存)
+
+            //建立checkbox
+            var checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.checked = todo.completed;
+
+            //待辦事項的input
+            var todoInput = document.createElement('input');
+            todoInput.type = 'text';
+            todoInput.value = todo.text; //input的值為待辦事項內容
+            todoInput.readOnly = true; //不可編輯
+
+            //建立一個div容器存放按鈕(編輯, 保存, 刪除)
+            var buttonContainer = document.createElement('div');
+            buttonContainer.classList.add('button-container');
+
+            //編輯按鈕
+            var editButton = document.createElement('button');
+            editButton.innerHTML = '<i class="fas fa-solid fa-pen-to-square"></i>'; // CSS ICON
+            editButton.classList.add('btn', 'btn-secondary', 'btn-sm', 'edit-button'); // Bootstrap+CSS
+
+            //保存按鈕
+            var saveButton = document.createElement('button');
+            saveButton.innerHTML = `<i class="fa-solid fa-floppy-disk"></i>`; // CSS ICON
+            saveButton.style.display = 'none'; // 預設隱藏, 替換編輯用
+            saveButton.classList.add('btn', 'btn-success', 'btn-sm', 'save-button'); // Bootstrap+CSS
+
+            //刪除按鈕
+            var deleteButton = document.createElement('button');
+            deleteButton.innerHTML = `<i class="fa-solid fa-trash-can"></i>`; // CSS ICON
+            deleteButton.classList.add('btn', 'btn-danger', 'btn-sm', 'delete-button'); // Bootstrap+CSS
+
+            //放到容器中
+            buttonContainer.appendChild(editButton);
+            buttonContainer.appendChild(saveButton);
+            buttonContainer.appendChild(deleteButton);
+
+            //建立待辦事項的清單
+            var addList = document.createElement('li');
+            addList.classList.add('list-group-item');
+            addList.appendChild(checkbox); // 加入checkbox
+            addList.appendChild(todoInput); // 加入input (編輯用)
+            addList.appendChild(buttonContainer); // 加入三個按鈕
+
+            // 綁定事件
+            checkbox.addEventListener('change', updateTodoStatus.bind(null, todo, todoInput));
+            editButton.addEventListener('click', editTodo.bind(null, todo, todoInput, saveButton));
+            saveButton.addEventListener('click', saveTodo.bind(null, todo, todoInput, editButton));
+            deleteButton.addEventListener('click', deleteTodo.bind(null, addList, todo));
+
+            return addList;
+        }
+
+        // 編輯待辦事項的function
+        function editTodo(todo, inputElement, saveButton) {
+            inputElement.readOnly = false; //按下後變回允許編輯
+            saveButton.style.display = 'inline-block';
+        }
+
+        // 保存待辦事項的function
+        function saveTodo(todo, inputElement, editButton) {
+            var newValue = inputElement.value;
+            var index = todos.findIndex(t => t.text === todo.text);
+
+            //更新待辦事項的文字內容後儲存到localStorage中
+            if (index > -1) {
+
+                //如果陣列當中存在待辦事項, 更新文字內容
+                todos[index].text = newValue;
+
+                //將更新後的待辦事項陣列放到localStorage
+                localStorage.setItem('todos', JSON.stringify(todos));
+
+                //把新的待辦事項文字內容賦值給當前待辦事項的文字內容
+                todo.text = newValue;
+
+            }
+            inputElement.readOnly = true; //變回不可編輯
+            editButton.style.display = 'inline-block'; //排版
+        }
+
+        // 刪除待辦事項的function
+        function deleteTodo(addList, todo) {
+
+            //DOM Tree中移除待辦事項的節點
+            listTo.removeChild(addList);
+
+            //在陣列找待辦事項的位置, 內容要和被刪除的一樣
+            var index = todos.findIndex(t => t.text === todo.text);
+
+            //陣列從0開始
+            if (index > -1) {
+
+                //splice修改陣列位置, 指定刪除的位置和數量
+                todos.splice(index, 1);
+
+                //更新localStorage
+                localStorage.setItem('todos', JSON.stringify(todos));
+            }
+        }
+
+        // 更新待辦事項狀態的function
+        function updateTodoStatus(todo, inputElement) {
+
+            //在陣列找待辦事項的位置, 內容要和被更新一樣
+            var index = todos.findIndex(t => t.text === todo.text);
+
+            if (index > -1) {
+
+                //切換待辦事項的完成狀態
+                todos[index].completed = !todos[index].completed;
+
+                //更新localStorage
+                localStorage.setItem('todos', JSON.stringify(todos));
+            }
+            inputElement.style.textDecoration = todos[index].completed ? 'line-through' : 'none';
+        }
+
+        // 待辦事項的陣列
+        //從localStorage讀取todo, 如果沒有顯示為空
+        var todos = JSON.parse(localStorage.getItem('todos')) || [];
+        var listTo = document.querySelector('.list-group');
+
+        //顯示每個代辦事項
+        todos.forEach(todo => listTo.appendChild(createTodoElement(todo)));
+
+        document.querySelector('#button-addon2').addEventListener('click', function () {
+
+            //選取使用者輸入
+            var input = document.querySelector('.form-control');
+
+            // 檢查輸入框是否為空
+            if (input.value.trim() === '') {
+                // 如果輸入為空，顯示錯誤訊息並返回
+                alert('請輸入待辦事項！');
+                return;
+            }
+            //新的代辦事項, 預設為未完成
+            var newTodo = { text: input.value, completed: false };
+            //把新增的待辦事項放到陣列(list)
+            todos.push(newTodo);
+            //更新localStorage
+            localStorage.setItem('todos', JSON.stringify(todos));
+
+            listTo.appendChild(createTodoElement(newTodo));
+
+            //新增後清空input
+            input.value = '';
+        });
+
+    </script>
+</body>
+
+</html>
