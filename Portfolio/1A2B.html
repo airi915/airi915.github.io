@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        #container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: start;
+            height: 100vh;
+            max-width: 100%;
+            margin: auto;
+            padding: 2%;
+            text-align: center;
+            background-color: #ffee86;
+        }
+
+        .playground {
+            width: 40%;
+            height: 100%;
+            margin: auto;
+            margin-top: 2%;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #records {
+            width: 80%;
+            flex-grow: 1;
+            border-radius: 5px;
+            border: 5px solid #9147ff;
+            background-color: #e3d2fd;
+            text-align: left;
+            padding: 2%;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+            overflow-y: auto;
+            max-height: 300px;
+            line-height: 0.5;
+            font-family: "Press Start 2P", cursive;
+
+        }
+
+        .guessbtn-group {
+            width: 50%;
+            border-radius: 10px;
+            margin-top: 3%;
+
+        }
+
+        .highlight {
+            margin: 5px 0;
+            padding: 2px 5px;
+            color: white;
+            background-image: linear-gradient(to top, #5f72bd 0%, #9b23ea 100%);
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 20px;
+            position: relative;
+            font-size: 18px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+
+        }
+
+
+        .eightbit-btn {
+            background: #92cd41;
+            display: inline-block;
+            position: relative;
+            text-align: center;
+            font-size: 15px;
+            padding: 10px;
+            font-family: "Press Start 2P", cursive;
+            text-decoration: none;
+            color: white;
+            box-shadow: inset -4px -4px 0px 0px #4aa52e;
+        }
+
+        .eightbit-btn:hover,
+        .eightbit-btn:focus {
+            background: #76c442;
+            box-shadow: inset -6px -6px 0px 0px #4aa52e;
+        }
+
+        .eightbit-btn:active {
+            box-shadow: inset 4px 4px 0px 0px #4aa52e;
+        }
+
+        .eightbit-btn:before,
+        .eightbit-btn:after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            box-sizing: content-box;
+        }
+
+        .eightbit-btn:before {
+            top: -6px;
+            left: 0;
+            border-top: 6px black solid;
+            border-bottom: 6px black solid;
+        }
+
+        .eightbit-btn:after {
+            left: -6px;
+            top: 0;
+            border-left: 6px black solid;
+            border-right: 6px black solid;
+        }
+
+        .eightbit-btn--reset {
+            background: #e76e55;
+            box-shadow: inset -4px -4px 0px 0px #8c2022;
+        }
+
+        .eightbit-btn--reset:hover,
+        .eightbit-btn--reset:focus {
+            background: #ce372b;
+            box-shadow: inset -6px -6px 0px 0px #8c2022;
+        }
+
+        .eightbit-btn--reset:active {
+            box-shadow: inset 4px 4px 0px 0px #8c2022;
+        }
+
+
+
+        .eightbit-btn--seek {
+            background: #f7d51d;
+            box-shadow: inset -4px -4px 0px 0px #e59400;
+        }
+
+        .eightbit-btn--seek:hover,
+        .eightbit-btn--seek:focus {
+            background: #f2c409;
+            box-shadow: inset -6px -6px 0px 0px #e59400;
+        }
+
+        .eightbit-btn--seek:active {
+            box-shadow: inset 4px 4px 0px 0px #e59400;
+        }
+
+
+
+        .eightbit-btn--guess {
+            font-size: 12px;
+            padding: 5px;
+            border-radius: 2%;
+        }
+
+        .eightbit-btn--guess:before {
+            top: -4px;
+            left: 0;
+            border-top: 4px black solid;
+            border-bottom: 4px black solid;
+        }
+
+        .eightbit-btn--guess:after {
+            left: -4px;
+            top: 0;
+            border-left: 4px black solid;
+            border-right: 4px black solid;
+        }
+
+        .eightbit-btn--start:disabled {
+            background-color: #64a30b;
+            color: #666666;
+            border: 1px solid #999999;
+        }
+
+        .eightbit-btn--seek:disabled {
+            background-color: #dc9105;
+            color: #666666;
+        }
+
+        .eightbit-btn--reset:disabled {
+            background-color: #d26954;
+            color: #666666;
+
+        }
+
+        /* 定制滚动条轨道 */
+        ::-webkit-scrollbar-track {
+            background: #952828;
+            /* 轨道颜色 */
+        }
+
+        /* 定制滚动条滑块 */
+        ::-webkit-scrollbar-thumb {
+            background: #be1b1b;
+            /* 滑块颜色 */
+        }
+
+        /* 滚动条滑块悬停效果 */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e45c5c;
+            /* 滑块悬停时的颜色 */
+        }
+
+        h1 {
+            font-family: "Press Start 2P", cursive;
+        }
+
+        p {
+            font-family: "Press Start 2P", cursive;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div class="col-sm-12">
+            <span>
+                <h1>1A2B GAME</h1>
+            </span>
+            <header>
+                <nav class="btn-group">
+                    <button class="eightbit-btn eightbit-btn--start" id="gameStartBtn">Play</button>
+                    <button class="eightbit-btn eightbit-btn--seek" id="seekAnswerBtn" disabled>Seek</button>
+                    <!-- 更改 ID -->
+                    <button class="eightbit-btn eightbit-btn--reset" id="gameResetBtn" disabled>Reset</button>
+                </nav>
+            </header>
+
+            <div class="playground">
+                <div id="records">
+                    <div class="tip-display">
+                        <p>Press play to start:) </p>
+                    </div>
+                </div>
+
+                <div class="guessbtn-group">
+                    <input type="text" id="guessInput">
+                    <button class="eightbit-btn eightbit-btn--guess" id="guessNumBtn" disabled>Guess</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let numArr = [];
+        let guessArr = [];
+        let guessInputNum, A, B;
+        let gameStarted = false;
+
+
+        window.onload = function () {
+
+            const gameStartBtn = document.getElementById('gameStartBtn');
+            const gameResetBtn = document.getElementById('gameResetBtn');
+            const seekAnswerBtn = document.getElementById('seekAnswerBtn');
+            const guessInput = document.getElementById('guessInput');
+            const records = document.getElementById('records');
+            const guessNumBtn = document.getElementById('guessNumBtn');
+
+            gameStartBtn.addEventListener('click', function () {
+
+
+                gameStartBtn.disabled = true;
+                gameResetBtn.disabled = false;
+                seekAnswerBtn.disabled = false;
+                guessNumBtn.disabled = false;
+
+                records.innerHTML = '';
+                gameStarted = true;
+
+                pageInit();
+            });
+
+            gameResetBtn.addEventListener("click", pageInit)
+
+            guessNumBtn.addEventListener("click", function () {
+                let myCountA = 0;
+                let myCountB = 0;
+
+                // 取得使用者輸入
+                let myInput = guessInput.value;
+
+                // 檢查使用者輸入是否有重複的數字
+                if (hasDuplicateDigits(myInput)) {
+                    records.innerHTML += 'duplicated numbers<br><br>';
+                    return;  // 如果有重複的數字，結束並不進行猜測
+                }
+
+                //檢查使用者輸入是否為四位數字
+                if (myInput.length !== 4) {
+                    records.innerHTML += 'enter 4 digits<br><br>';
+                    return;  // 如果不是四位數字，結束並不進行猜測
+                }
+
+
+
+                // 進行判斷
+                for (let i = 0; i < myInput.length; i++) {
+                    let myChar = myInput[i];
+
+                    // 使用者輸入的數字之一 有沒有在答案裡面
+                    if (answer.includes(myChar)) {
+                        // 如果有，判斷位置有沒有相同
+                        if (answer.indexOf(myChar) == myInput.indexOf(myChar)) {
+                            myCountA++;
+                        } else {
+                            myCountB++;
+                        }
+                    }
+                }
+
+                // 把本次猜測的結果加到紀錄中
+                records.innerHTML += `<span class="highlight">${myCountA}A${myCountB}B</span> ${myInput}<br>`;
+
+                // 最後判斷遊戲是否獲勝
+                // myCountA = 4 代表猜對，沒有就繼續遊戲
+                if (myCountA == 4) {
+                    // 印出贏得遊戲的提示
+                    records.innerHTML += `You win! The answer is ${answer}.<br>`;
+                }
+            });
+
+            seekAnswerBtn.addEventListener("click", function () {
+                alert(`The answer is ${answer} (●´ω｀●)ゞ`);
+            });
+
+            gameResetBtn.addEventListener("click", function () {
+                //清空遊戲紀錄和輸入框內容
+                records.innerHTML = '<div class="tip-display"><p>Press play to start:)</p></div>';
+                guessInput.value = '';
+
+                pageInit();
+                gameStarted = false;
+
+                gameStartBtn.disabled = false;
+                seekAnswerBtn.disabled = true;
+                gameResetBtn.disabled = true;
+            });
+
+
+            guessNumBtn.addEventListener("click", function () {
+                if (!gameStarted) {
+                    alert(`Please press play button to start`);  // 首先弹出警告
+                    return;  // 然后退出函数
+                }
+
+                let answer;
+                function pageInit() {
+                    // 遊戲介面初始化
+
+
+                    // 產生新的答案
+                    let randomNumbers = [];
+                    while (randomNumbers.length < 4) {
+                        let randomNumber = Math.floor(Math.random() * 10);
+                        if (randomNumbers.indexOf(randomNumber) === -1) {
+                            randomNumbers.push(randomNumber);
+                        }
+                    }
+                    answer = randomNumbers.join('');
+
+                    // 重设按钮状态
+                    gameStartBtn.disabled = true; // "Play" 按钮在游戏开始时应该禁用
+                    seekAnswerBtn.disabled = false; // "Seek" 按钮在游戏开始时应该禁用
+                    gameResetBtn.disabled = false; // "Reset" 按钮在游戏开始时应该启用
+                };
+
+                function hasDuplicateDigits(input) {
+                    let charSet = new Set(input);
+                    return charSet.size !== input.length;
+                }
+    </script>
+</body>
+
+</html>
