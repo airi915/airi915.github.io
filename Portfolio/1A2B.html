@@ -189,23 +189,14 @@
 
         }
 
-        /* 定制滚动条轨道 */
-        ::-webkit-scrollbar-track {
-            background: #952828;
-            /* 轨道颜色 */
+        .eightbit-btn--guess:disabled {
+            background-color: #64a30b;
+            color: #666666;
+            border: 1px solid #999999;
+
         }
 
-        /* 定制滚动条滑块 */
-        ::-webkit-scrollbar-thumb {
-            background: #be1b1b;
-            /* 滑块颜色 */
-        }
 
-        /* 滚动条滑块悬停效果 */
-        ::-webkit-scrollbar-thumb:hover {
-            background: #e45c5c;
-            /* 滑块悬停时的颜色 */
-        }
 
         h1 {
             font-family: "Press Start 2P", cursive;
@@ -215,6 +206,7 @@
             font-family: "Press Start 2P", cursive;
 
         }
+
     </style>
 </head>
 
@@ -252,8 +244,6 @@
         let numArr = [];
         let guessArr = [];
         let guessInputNum, A, B;
-        let gameStarted = false;
-
 
         window.onload = function () {
 
@@ -273,14 +263,15 @@
                 guessNumBtn.disabled = false;
 
                 records.innerHTML = '';
-                gameStarted = true;
 
+                records.innerHTML = '';
                 pageInit();
             });
 
             gameResetBtn.addEventListener("click", pageInit)
 
             guessNumBtn.addEventListener("click", function () {
+
                 let myCountA = 0;
                 let myCountB = 0;
 
@@ -337,45 +328,39 @@
                 guessInput.value = '';
 
                 pageInit();
-                gameStarted = false;
 
                 gameStartBtn.disabled = false;
                 seekAnswerBtn.disabled = true;
                 gameResetBtn.disabled = true;
-            });
+            })
+
+        }
+
+        let answer;
+        function pageInit() {
+            // 遊戲介面初始化
 
 
-            guessNumBtn.addEventListener("click", function () {
-                if (!gameStarted) {
-                    alert(`Please press play button to start`);  // 首先弹出警告
-                    return;  // 然后退出函数
+            // 產生新的答案
+            let randomNumbers = [];
+            while (randomNumbers.length < 4) {
+                let randomNumber = Math.floor(Math.random() * 10);
+                if (randomNumbers.indexOf(randomNumber) === -1) {
+                    randomNumbers.push(randomNumber);
                 }
+            }
+            answer = randomNumbers.join('');
 
-                let answer;
-                function pageInit() {
-                    // 遊戲介面初始化
+            // 重設按鈕狀態
+            gameStartBtn.disabled = true;
+            seekAnswerBtn.disabled = false;
+            gameResetBtn.disabled = false; 
+        };
 
-
-                    // 產生新的答案
-                    let randomNumbers = [];
-                    while (randomNumbers.length < 4) {
-                        let randomNumber = Math.floor(Math.random() * 10);
-                        if (randomNumbers.indexOf(randomNumber) === -1) {
-                            randomNumbers.push(randomNumber);
-                        }
-                    }
-                    answer = randomNumbers.join('');
-
-                    // 重设按钮状态
-                    gameStartBtn.disabled = true; // "Play" 按钮在游戏开始时应该禁用
-                    seekAnswerBtn.disabled = false; // "Seek" 按钮在游戏开始时应该禁用
-                    gameResetBtn.disabled = false; // "Reset" 按钮在游戏开始时应该启用
-                };
-
-                function hasDuplicateDigits(input) {
-                    let charSet = new Set(input);
-                    return charSet.size !== input.length;
-                }
+        function hasDuplicateDigits(input) {
+            let charSet = new Set(input);
+            return charSet.size !== input.length;
+        }
     </script>
 </body>
 
