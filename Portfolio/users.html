@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://kit.fontawesome.com/c033302ad6.js" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+  <!--<link rel="stylesheet" href="users.css">-->
+  <style>
+    .container {
+      width: 100%;
+      height: 100%;
+      font-size: 14px;
+      color: #999999;
+    }
+
+    .logout a {
+      color: #999999;
+    }
+
+    .nav-tabs {
+      background-color: #f5f5f5;
+      border-radius: 5%;
+    }
+
+    .nav-link {
+      color: #999999;
+    }
+
+    .nav-link:hover {
+      color: black;
+    }
+
+    .profile-container {
+      width: 98%;
+      border: 1px solid #dcdcdc;
+      border-top: none;
+      margin-top: 0;
+
+    }
+
+    .membership-info {
+      padding: 1% 0;
+    }
+
+    .membership-info-title {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 2% 0;
+      margin: 0;
+    }
+
+    .membership-level {
+      background-color: #f5f5f5;
+    }
+
+    .icon {
+      margin-right: 1%;
+    }
+
+    .fa-flag {
+      color: #dcdcdc;
+    }
+
+    .label-col,
+    .name-group label,
+    .email-group label,
+    .phone-group label,
+    .password-group label {
+      width: 20%;
+    }
+
+    .password-group {
+      margin: 5% 0;
+    }
+
+    label[data-label-type="subscription"] {
+      margin-right: 1rem;
+    }
+
+    .line-message-btn a:hover {
+      background-color: #fff;
+      color: black;
+    }
+
+
+    .box-info.edit-group.subscription {
+      margin: 5% 0;
+    }
+
+    .submit-btn {
+      background-color: #bd866f;
+      border: 1px solid #bd866f;
+    }
+
+    .submit-btn:hover {
+      background-color: #fff;
+      color: #bd866f;
+      border: 1px solid #bd866f;
+    }
+
+    .cancel-btn:hover {
+      color: black;
+      border: 1px solid #000000;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="container mt-3">
+    <div class="row justify-content-center">
+      <!-- Nav -->
+      <div class="logout mb-2 text-start">
+        <a href="">登出</a>
+      </div>
+      <div class="nav-bar">
+        <ul class="nav nav-tabs nav-fill">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">個人資訊</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">商店購物金</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="coupon.html">優惠券</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="messages.html">訊息</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="orders.html">訂單</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="following.html">追蹤清單</a>
+          </li>
+        </ul>
+      </div>
+      <div class="profile-container ">
+        <div class="users-container row p-3">
+          <div class="membership-container row">
+            <!-- 會員等級區塊 -->
+            <!-- 名字區塊-->
+            <div class="membership-info">
+              <img width="24" height="24" src="https://img.icons8.com/material-rounded/24/dcdcdc/name.png" alt="name" />
+              <span>吳語甯</span>
+              <div class="member-level" style="display: inline-block">
+                <span class="badge rounded-pill bg-warning text-dark p-2 fs-6 fw-bold text-white">一般會員</span>
+              </div>
+            </div>
+
+            <div class="membership-level col-12 col-lg-6">
+
+              <!-- Membership Date Section -->
+              <div class="membership-date-section d-flex flex-column justify-content-center" style="height: 100%;">
+                <div class="membership-date">
+                  <i class="fa fa-clock-o" aria-hidden="true"></i>
+                  <span class="membership-title">會籍到期日</span>
+                  <span class="membership-date-value">2024/07/31</span>
+                </div>
+                <div class="membership-levelup">
+                  <img width="20" height="20" src="https://img.icons8.com/fluency-systems-filled/48/membership-card.png"
+                    alt="membership-card" aria-hidden="true" />
+                  <span class="membership-level-title">升級至VIP會員</span>
+                  <span class="membership-level-item">12 個月內累積消費額達 NT$3,000 即可升級</span>
+                </div>
+                <div class="membership-detail-rule">
+                  <a href="" class="member-center-select">
+                    查看所有會員等級規則
+                  </a>
+                </div>
+              </div>
+
+            </div>
+            <div class="membership-tier col-12 col-lg-6">
+              <div class="d-flex align-items-center">
+                <div class="icon">
+                  <i class="fa fa-flag" aria-hidden="true"></i>
+                </div>
+                <div class="detail-item ml-3">
+                  <span class="membership-tier-title fw-bold">12 個月內累積消費額</span>
+                </div>
+              </div>
+
+              <!-- 累積進度條 -->
+              <div class="membership-tier-pull">
+                <div class="price-item d-flex justify-content-between">
+                  <span class="membership-price" style="font-size: 10px;">NT$0</span>
+                  <span class="membership-price-level" style="font-size: 10px;">差 NT$3000 升級</span>
+                </div>
+
+                <div class="progress">
+                  <div class="progress-bar progress-bar-striped  bg-dark" role="progressbar" style="width: 10%"
+                    aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <div class="discription-item">
+                  <p style="font-size: 10px;">自動更新時間為訂單完成付款後的隔日凌晨，若因取消訂單或退貨未達成升級條件則不會升級。</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="membership-info-title col-12">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+            <span>編輯會員資料</span>
+          </div>
+          <!-- 左邊那塊 -->
+          <div class="col-12 col-md-6 d-flex flex-column justify-content-between">
+
+
+            <div class="user-edit-group">
+
+              <!-- 會員資料 -->
+              <div class="box-info edit-group">
+
+                <!-- 名字 -->
+                <div class="name-group input-group mb-3">
+                  <label>姓名</label>
+                  <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" />
+                </div>
+                <!-- EMAIL -->
+                <div class="email-group input-group mb-3">
+                  <label>電郵</label>
+                  <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" />
+                </div>
+                <div class="phone-group input-group mb-3">
+                  <label>手機號碼</label>
+                  <input type="phone" class="form-control" aria-label="Username" aria-describedby="basic-addon1" />
+                </div>
+                <div class="password-group">
+                  <label>密碼</label>
+                  <a href="#" class="password-text member-center-select">設定新的密碼</a>
+                </div>
+                <div class="password-group">
+                  <label>信用卡</label>
+                  <a href="#" class="password-text member-center-select">新增信用卡</a>
+                </div>
+              </div>
+              <!-- 訂閱 -->
+              <div class="name-group input-group mb-3 d-flex">
+                <label class="align-self-start">已訂閱通知</label>
+                <div class="d-flex flex-column ml-3"> <!-- 新增 flex-column 且增加 ml-3 使其與 label 有一定的間距 -->
+                  <div class="mb-2">
+                    <input type="checkbox" /><span>訂閱電郵</span>
+                  </div>
+                  <div class="mb-2">
+                    <input type="checkbox" /><span>訂閱SMS</span>
+                  </div>
+                  <div class="line-message-btn">
+                    <a href="#" class="btn btn-outline-success">
+                      <img width="18" height="17"
+                        src="https://img.icons8.com/fluency-systems-filled/48/00C300/line-me.png" alt="line-me" />
+                      傳送到LINE
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+
+
+              <!-- 性別區塊 -->
+              <div class="gender-group row">
+                <div class="label-col">
+                  <label for="genderSelect">性別 (選填)</label>
+                </div>
+                <div class="col-md-8">
+                  <select class="form-select form-select-lg" aria-label="Large select example" id="genderSelect">
+                    <option selected>-</option>
+                    <option value="1">男</option>
+                    <option value="2">女</option>
+                    <option value="3">不願透露</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- 生日區塊 -->
+              <div class="birthdate-group row">
+                <div class="label-col">
+                  <label for="birthDate">生日日期</label>
+                </div>
+                <div class="content-col">
+                  <span id="birthDate">1999/08/20</span>
+                </div>
+                <div class="password-group">
+                  <label>生日日期</label>
+                  <span id="birthDate">1999/08/20</span>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+          <!-- 右邊那塊 -->
+          <div class="col-12 col-md-6 d-flex flex-column justify-content-between">
+            <!-- 聯絡電話和地址 -->
+            <div class="box-info edit-group contact-text ">
+              <div class="phone-group input-group mb-3">
+                <label>聯絡電話 (選填)</label>
+                <input type="phone" class="form-control" aria-label="Username" aria-describedby="basic-addon1" />
+              </div>
+              <div class="password-group">
+                <label>儲存的地址 (選填)</label>
+                <a href="#" class="password-text member-center-select">新增送貨地址</a>
+              </div>
+            </div>
+            <div class="d-flex justify-content-end mt-3 gap-2">
+              <input class="cancel-btn btn btn-light border" type="reset" value="取消" />
+              <input class="submit-btn btn btn-primary" type="submit" value="儲存變更" />
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- Closing the users-container row -->
+    </div>
+    <!-- Closing the row -->
+  </div>
+  <!-- Closing the container -->
+</body>
+
+</html>

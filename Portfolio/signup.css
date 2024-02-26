@@ -1,0 +1,152 @@
+@media (max-width: 991px) {
+    #Footer .container:first-child .row .item:not(:last-child) {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 767px) {
+    #Footer .Footer-grids {
+        padding: 0 15px 0;
+    }
+}
+
+.content {
+    margin: auto;
+    justify-content: center;
+    max-width: 100%;
+}
+
+.container {
+    margin: auto;
+    justify-content: center;
+    text-align: center;
+    max-width: 45%;
+}
+
+a {
+    text-decoration: none;
+}
+
+.account-info {
+    border: 1px solid #dcdcdc;
+    padding: 0 5% 5% 5%;
+}
+
+.content-tabset {
+    width: 45%;
+    margin: auto;
+}
+
+.content-tabset ul {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    padding: 20px;
+}
+
+.btn-line-login {
+    display: flex;
+    justify-content: center;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #00c300;
+}
+
+.btn-line-login:hover {
+    opacity: 0.8;
+}
+
+.btn-line-login img {
+    width: 40px;
+    height: 40px;
+}
+
+.btn-line-login span {
+    color: #fff;
+    line-height: 1.43;
+    font-weight: 600;
+    font-size: 14px;
+    width: 100%;
+    text-align: center;
+    margin-left: -40px;
+}
+
+.forgot-link-container {
+    padding-top: 5%;
+}
+
+.forgot-link-container a {
+    text-decoration: none;
+    color: rgb(129, 129, 129);
+}
+
+.forgot-link-container a:hover {
+    color: rgb(94, 94, 94);
+}
+
+.birthday-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.brithday-picker-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.brithday-picker,
+.brith-month-picker,
+.birth-day-picker {
+    flex: 1;
+    margin-right: 10px;
+    box-sizing: border-box;
+}
+
+.birth-day-picker {
+    margin-right: 0;
+    /* 因為最後一個不需要右邊的間距 */
+}
+
+.social-message-btn {
+    text-align: left;
+}
+
+.social-message-btn a:first-child {
+    margin-bottom: 10px;
+}
+
+.social-message-btn .line-message-btn .btn.btn-outline-success {
+    border-color: #dcdcdc;
+}
+
+.social-message-btn .facebook-message-btn .btn.btn-outline-primary {
+    border-color: #dcdcdc;
+}
+
+.social-message-btn .line-message-btn .btn.btn-outline-success:hover {
+    border-color: #dcdcdc !important;  
+    background-color: transparent;
+
+}
+
+.social-message-btn .facebook-message-btn .btn.btn-outline-primary:hover {
+    border-color: #dcdcdc !important;   
+    background-color: transparent;
+
+}
+
+.marketing-text-left {
+    padding: 20px 0px;
+}
+
+.agree-text-left{
+    text-align: left;
+    margin: 0;
+    padding-bottom: 10px;
+}
+
+.birthday-text-left{
+    padding-top: 15px;
+}

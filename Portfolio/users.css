@@ -1,0 +1,92 @@
+.container {
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    color: #999999;
+}
+
+.nav-tabs {
+    background-color: #f5f5f5;
+    border-radius: 5%;
+}
+
+.nav-link {
+    color: #999999;
+}
+
+.nav-link:hover {
+    color: black;
+}
+
+.users-container {
+    width: 98.5%;
+    border: 1px solid #dcdcdc;
+    border-top: none;
+    margin-top: -1%;
+
+}
+
+.membership-info {
+    padding: 1% 0;
+}
+
+.membership-info-title {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 2% 0;
+    margin: 0;
+}
+
+.membership-level {
+    background-color: #f5f5f5;
+}
+
+.icon {
+    margin-right: 1%;
+}
+
+.fa-flag {
+    color: #dcdcdc;
+}
+
+.label-col,
+.name-group label,
+.email-group label,
+.phone-group label,
+.password-group label {
+    width: 20%;
+}
+
+.password-group {
+    margin: 5% 0;
+}
+
+label[data-label-type="subscription"] {
+    margin-right: 1rem;
+}
+
+.line-message-btn a:hover {
+    background-color: #fff;
+    color: black;
+}
+
+
+.box-info.edit-group.subscription {
+    margin: 5% 0;
+}
+
+.submit-btn {
+    background-color: #bd866f;
+    border: 1px solid #bd866f;
+}
+
+.submit-btn:hover {
+    background-color: #fff;
+    color: #bd866f;
+    border: 1px solid #bd866f;
+}
+
+.cancel-btn:hover {
+    color: black;
+    border: 1px solid #000000;
+}

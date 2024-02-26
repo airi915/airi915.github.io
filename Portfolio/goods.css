@@ -1,0 +1,89 @@
+.container {
+    max-width: 95%;
+    max-height: 100%;
+}
+
+.card-group {
+    max-width: 100%;
+    max-height: 80%;
+}
+
+.card-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: filter 0.3s ease;
+}
+
+.container a {
+    text-decoration: none;
+}
+
+.col-3 .list-group-item {
+    border: none !important;
+}
+
+.col-3 ul li a {
+    color: #999;
+}
+
+.no-shrink {
+    flex-shrink: 0;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.card:hover .card-image {
+    filter: brightness(0.5);
+}
+
+.card:hover .btn-position {
+    bottom: 25%;
+}
+
+.btn-position {
+    position: absolute;
+    bottom: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    transition: background-color 1s ease, color 1s ease;
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+
+.btn-position:hover {
+    background-color: #bd866f;
+    color: #fff;
+}
+
+.offcanvas {
+    width: 80% !important;
+}
+
+
+body.offcanvas-open {
+    filter: blur(5px);
+}
+
+.offcanvas a {
+    text-decoration: none;
+    color: #999;
+}
+
+.offcanvas .list-group-item {
+    border: none !important;
+}
+
+@media only screen and (max-width: 767px) {
+    .col-sm-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
