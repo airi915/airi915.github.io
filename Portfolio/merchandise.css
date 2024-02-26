@@ -1,0 +1,10 @@
+.container{
+    width: 100%;
+}
+.border-left-decor {
+    border-left: 4px solid #bd866f; 
+    padding-left: 15px; 
+}
+.review-summary-info-stars .fa {
+    color: #fdc500;
+}
