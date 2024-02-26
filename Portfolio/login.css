@@ -1,0 +1,83 @@
+@media screen and (min-width: 768px) {
+  .row {
+
+    max-width: 100%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+
+  @media (max-width: 768px) {
+    .col-mobile-12 {
+      width: 100%;
+    }
+  }
+}
+
+.content {
+  margin: auto;
+  justify-content: center;
+  max-width: 100%;
+}
+
+.container {
+  margin: auto;
+  justify-content: center;
+  text-align: center;
+  width: 45%;
+}
+
+a {
+  text-decoration: none;
+}
+
+.account-info {
+  border: 1px solid #dcdcdc;
+  padding: 0 5% 5% 5%;
+}
+
+.content-tabset {
+  width: 45%;
+  margin: auto;
+}
+
+.content-tabset ul {
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+  padding: 20px;
+}
+
+.btn-line-login {
+  display: flex;
+  justify-content: center;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #00c300;
+}
+
+.btn-line-login:hover {
+  opacity: 0.8;
+}
+
+.btn-line-login img {
+  width: 40px;
+  height: 40px;
+}
+
+.btn-line-login span {
+  color: #fff;
+  line-height: 1.43;
+  font-weight: 600;
+  font-size: 14px;
+  width: 100%;
+  text-align: center;
+  margin-left: -40px;
+}
+
+.forgot-link-container {
+  padding-top: 5%;
+}
