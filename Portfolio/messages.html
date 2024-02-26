@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/c033302ad6.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    <!--<link rel="stylesheet" href="messages.css" />-->
+    <style>
+        .container {
+            width: 100%;
+            height: 100%;
+
+        }
+
+        .content-container {
+            width: 100%;
+            height: 100%;
+        }
+
+        .fa {
+            color: #dcdcdc;
+        }
+
+        .logout a {
+            color: #999999;
+        }
+
+        .nav-tabs {
+            background-color: #f5f5f5;
+            border-radius: 5%;
+        }
+
+        .nav-link {
+            color: #999999;
+            border: none;
+        }
+
+        .nav-link:hover {
+            color: black;
+        }
+
+        .message-title {
+            background-color: #fbfbfb;
+            width: 100%;
+            height: 45px;
+            padding-bottom: 2%;
+        }
+
+        .message-list-container {
+            padding: 5%;
+            border-left: 1px solid #dee2e6;
+            border-right: 1px solid #dee2e6;
+            border-bottom: 1px solid #dee2e6;
+            font-size: 14px;
+            color: #66666;
+        }
+
+
+        .message-content {
+            padding: 1%;
+            width: 50%;
+            border: 1px solid #dee2e6;
+        }
+
+        .message-area {
+            background-color: #fbfbfb;
+        }
+
+        li:first-child {
+            justify-content: flex-end;
+        }
+
+        li:nth-child(2) {
+            justify-content: flex-start;
+        }
+
+        .message-textarea {
+            padding-bottom: 2%;
+        }
+
+        .user-image {
+            margin-left: 1rem;
+        }
+
+        .logo-image {
+            margin-right: 1rem;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <!-- Nav -->
+            <div class="logout mb-2 text-start">
+                <a href="">登出</a>
+            </div>
+            <div class="content-container">
+                <div class="nav-bar">
+                    <ul class="nav nav-tabs nav-fill">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="#">個人資訊</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">商店購物金</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">優惠券</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">訊息</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">訂單</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">追蹤清單</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="message-list-container col-sm-12 mx-auto d-flex justify-content-center">
+                    <div class="message-content d-flex flex-column justify-content-center">
+                        <div class="message-title d-flex align-items-center justify-content-center">
+                            <h2 class="text-center fs-5 mb-0">vacances</h2>
+                        </div>
+                        <div class="message-list">
+                            <ul>
+                                <li class="d-flex">
+                                    <div class="message-area">
+                                        您好，有訂單訊息想詢問
+                                        <p><time>2022-08-12 12:20:25</time></p>
+                                    </div>
+                                    <img class="user-image ml-3 rounded-circle"
+                                        src="https://s3-ap-southeast-1.amazonaws.com/static.shoplineapp.com/web/v1/img/placeholder-user-default.png"
+                                        style="width:50px;height:50px">
+                                </li>
+
+                                <li class="d-flex ">
+                                    <img class="logo-image mr-3"
+                                        src="https://img.shoplineapp.com/media/image_clips/646de1c71cb6080011084547/original.png?1684922823"
+                                        style="width:50px;height:50px">
+                                    <div class="message-area">
+                                        您好，請問有什麼可以協助您的呢?
+                                        <p><time>2022-08-12 13:00:25</time></p>
+                                    </div>
+                                </li>
+                            </ul>
+
+                        </div>
+                        <div class="message-textarea">
+                            <div class="form-floating">
+                                <textarea class="form-control" placeholder="輸入訊息" id="floatingTextarea2"
+                                    style="height: 100px"></textarea>
+                                <label for="floatingTextarea2">輸入訊息</label>
+                            </div>
+                        </div>
+                        <div class="message-button-group d-flex justify-content-between">
+                            <button type="button" class="btn btn-dark btn-sm"><i class="fa fa-plus-circle"></i>加入圖片</button>
+                            <button type="button" class="btn btn-dark btn-sm">傳送</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+        <!-- Closing the row -->
+    </div>
+    <!-- Closing the container -->
+</body>
+
+</html>
